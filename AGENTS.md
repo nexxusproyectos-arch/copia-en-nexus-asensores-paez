@@ -8,3 +8,8 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Company contact data and WhatsApp links come only from `src/lib/site.ts` (`waLink`); never hardcode the number elsewhere so it changes in one place.
+- Service landings are one template (`src/routes/servicios.$slug.tsx`) fed by `src/lib/services.ts`; add a service by adding data, not a new route file.
+- Contact form submissions are validated with zod and stored server-side in `contact_submissions` via a server function; never simulate sends.
