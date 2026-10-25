@@ -20,7 +20,7 @@ export const Route = createFileRoute("/contacto")({
   component: Contact,
 });
 
-type Errors = Partial<Record<string, string>>;
+type Errors = Partial<Record<"nombre" | "telefono" | "correo" | "servicio" | "mensaje" | "acepta", string>>;
 const input = "w-full rounded-md border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20";
 
 function Contact() {
@@ -43,7 +43,7 @@ function Contact() {
     const parsed = contactSchema.safeParse(values);
     if (!parsed.success) {
       const errs: Errors = {};
-      parsed.error.issues.forEach((i) => (errs[String(i.path[0])] = i.message));
+      parsed.error.issues.forEach((i) => (errs[i.path[0] as keyof Errors] = i.message));
       setErrors(errs);
       return;
     }
