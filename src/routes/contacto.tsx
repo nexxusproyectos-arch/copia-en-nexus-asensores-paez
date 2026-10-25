@@ -120,7 +120,7 @@ function Contact() {
   );
 }
 
-function Field({ label, name, error, children }: { label: string; name: string; error?: string; children: React.ReactNode }) {
+function Field({ label, name, error, children }: { label: string; name: string; error?: string | undefined; children: React.ReactNode }) {
   return (
     <div>
       <label htmlFor={name} className="mb-2 block text-sm font-bold">{label}</label>
