@@ -121,9 +121,9 @@ function Home() {
               ))}
             </div>
           </div>
-          <div className={`no-scrollbar -mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 md:mx-0 md:grid md:overflow-visible md:px-0 ${tab === "producto" ? "md:grid-cols-4 md:grid-rows-[repeat(2,15rem)]" : "md:grid-cols-3 md:grid-rows-[repeat(2,15rem)]"}`}>
+          <div className={`no-scrollbar -mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 md:mx-0 md:grid md:overflow-visible md:px-0 md:grid-cols-3 ${tab === "producto" ? "md:grid-rows-[repeat(3,13rem)]" : "md:grid-rows-[repeat(2,15rem)]"}`}>
             {catalog.map((s, i) => (
-              <Link key={s.slug} to="/servicios/$slug" params={{ slug: s.slug }} className={`group relative w-[82%] shrink-0 snap-start overflow-hidden rounded-lg bg-ink text-ink-foreground md:w-auto ${i === 0 ? "h-80 md:col-span-2 md:row-span-2 md:h-auto" : "h-80 md:h-auto"} ${tab === "servicio" && i === 0 ? "md:col-span-1" : ""}`}>
+              <Link key={s.slug} to="/servicios/$slug" params={{ slug: s.slug }} className={`group relative w-[82%] shrink-0 snap-start overflow-hidden rounded-lg bg-ink text-ink-foreground md:w-auto ${i === 0 ? "h-80 md:col-span-2 md:row-span-2 md:h-auto" : "h-80 md:h-auto"} ${tab === "servicio" && i === 0 ? "md:col-span-1" : ""} ${tab === "servicio" && i === 3 ? "md:col-span-2" : ""}`}>
                 <img src={s.image} alt={s.imageAlt} loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-80 transition duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
                 <div className="relative flex h-full flex-col justify-end p-6">
