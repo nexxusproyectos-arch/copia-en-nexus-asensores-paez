@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { PROJECTS, type ProjectCategory } from "@/lib/images";
 
 const CATS: ("Todos" | ProjectCategory)[] = ["Todos", "Pasajeros", "Carga", "Montacoches", "Movilidad reducida", "Puertas vehiculares", "Escaleras eléctricas"];
@@ -22,23 +23,27 @@ export function Gallery({ limit }: { limit?: number }) {
 
   return (
     <div>
-      <div className="flex gap-2 overflow-x-auto pb-2" role="tablist" aria-label="Filtrar proyectos">
+      <LayoutGroup id="gallery"><div className="flex gap-2 overflow-x-auto pb-2" role="tablist" aria-label="Filtrar proyectos">
         {CATS.map((c) => (
-          <button key={c} role="tab" aria-selected={cat === c} onClick={() => setCat(c)} className={`shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition ${cat === c ? "border-foreground bg-foreground text-background" : "border-border hover:border-foreground"}`}>
-            {c}
+          <button key={c} role="tab" aria-selected={cat === c} onClick={() => setCat(c)} className={`relative shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${cat === c ? "border-foreground text-background" : "border-border hover:border-foreground"}`}>
+            {cat === c && <motion.span layoutId="gallery-pill" className="absolute inset-0 -z-0 rounded-full bg-foreground" transition={{ type: "spring", stiffness: 400, damping: 32 }} />}
+            <span className="relative">{c}</span>
           </button>
         ))}
       </div>
+      </LayoutGroup>
       <div className="mt-8 columns-1 gap-4 sm:columns-2 lg:columns-3">
+        <AnimatePresence mode="popLayout" initial={false}>
         {items.map((p, i) => (
-          <button key={p.src + p.title} onClick={() => setIdx(i)} className={`group relative mb-4 block w-full break-inside-avoid overflow-hidden rounded-lg bg-muted text-left ${["h-80", "h-56", "h-64"][i % 3]}`} aria-label={`Ver foto: ${p.title}`}>
+          <motion.button layout initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.96 }} transition={{ duration: 0.35 }} key={p.src + p.title} onClick={() => setIdx(i)} className={`group relative mb-4 block w-full break-inside-avoid overflow-hidden rounded-lg bg-muted text-left ${["h-80", "h-56", "h-64"][i % 3]}`} aria-label={`Ver foto: ${p.title}`}>
             <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 to-transparent p-4 text-ink-foreground">
               <span className="text-[0.65rem] font-bold uppercase tracking-widest text-primary">{p.category}</span>
               <span className="block font-bold">{p.title}</span>
             </div>
-          </button>
+          </motion.button>
         ))}
+        </AnimatePresence>
       </div>
       {idx !== null && items[idx] && (
         <div className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/95 p-4" role="dialog" aria-modal="true" aria-label={items[idx].title} onClick={() => setIdx(null)}>
