@@ -37,7 +37,7 @@ const card = "flex min-h-14 items-center gap-3 rounded-lg border-2 px-4 py-3 tex
 const on = "border-primary bg-primary/5";
 const off = "border-border hover:border-foreground";
 
-export function Cotizador({ preset }: { preset?: { need: string; n: number } }) {
+export function Cotizador({ preset }: { preset?: { need: string; n: number } | undefined }) {
   const [step, setStep] = useState(1);
   const [need, setNeed] = useState("");
   const [property, setProperty] = useState("");
