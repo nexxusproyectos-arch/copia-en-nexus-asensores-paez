@@ -36,11 +36,12 @@ export function Header() {
       className={`sticky top-0 z-50 border-b transition-[background-color,box-shadow,border-color] duration-300 ${solid ? "border-border bg-background/85 shadow-[0_8px_30px_-12px_color-mix(in_oklab,var(--foreground)_25%,transparent)] backdrop-blur-md" : "border-transparent bg-background"}`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 lg:h-20">
+        <div className="flex shrink-0 items-center gap-3">
         <Link to="/" className="flex shrink-0 items-center gap-2" aria-label={`${SITE.name} – inicio`}>
           <img src={IMG.logo} alt="Logo Ascensores Páez S.A.S." className="h-10 w-auto lg:h-12" width={54} height={44} />
         </Link>
         <FloorIndicator />
-        <div className="flex-1 lg:hidden" />
+        </div>
         <nav className="hidden items-center gap-7 text-sm font-semibold lg:flex" aria-label="Principal">
           <Link to="/" activeOptions={{ exact: true }} activeProps={{ className: "text-primary" }} className="hover:text-primary">Inicio</Link>
           <div className="group relative">
