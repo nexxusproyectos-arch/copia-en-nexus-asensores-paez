@@ -103,3 +103,32 @@
   scrollbar-width: none;
   &::-webkit-scrollbar { display: none; }
 }
+
+/* ── Motion: concepto "ascensor" ── */
+@keyframes door-line { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes door-left { to { transform: translateX(-100%); } }
+@keyframes door-right { to { transform: translateX(100%); } }
+@keyframes door-hide { to { visibility: hidden; } }
+.elevator-intro { position: fixed; inset: 0; z-index: 100; pointer-events: none; animation: door-hide 0s linear 1.2s forwards; }
+.elevator-intro .door { position: absolute; top: 0; bottom: 0; width: 50.5%; background: var(--ink); }
+.elevator-intro .door-l { left: 0; animation: door-left 0.9s cubic-bezier(0.76, 0, 0.24, 1) 0.3s forwards; }
+.elevator-intro .door-r { right: 0; animation: door-right 0.9s cubic-bezier(0.76, 0, 0.24, 1) 0.3s forwards; }
+.elevator-intro .door-line { position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: var(--primary); transform-origin: left; animation: door-line 0.3s ease-out forwards, door-hide 0s linear 0.35s forwards; transform: scaleX(0); }
+html.intro-seen .elevator-intro { display: none; }
+
+@keyframes line-up { from { transform: translateY(105%); } to { transform: none; } }
+.line-mask { display: block; overflow: hidden; padding-bottom: 0.06em; }
+.line-mask > span { display: block; animation: line-up 0.9s cubic-bezier(0.76, 0, 0.24, 1) both; }
+
+@keyframes wa-pulse { 0%, 85% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.7); opacity: 0; } }
+.wa-pulse::before { content: ""; position: absolute; inset: 0; border-radius: 9999px; background: var(--whatsapp); animation: wa-pulse 6s ease-out infinite; z-index: -1; }
+
+.btn-shine { position: relative; overflow: hidden; isolation: isolate; }
+.btn-shine::after { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, color-mix(in oklab, var(--primary-foreground) 35%, transparent) 50%, transparent 70%); transform: translateX(-120%); transition: transform 0.7s ease; pointer-events: none; }
+@media (hover: hover) { .btn-shine:hover::after { transform: translateX(120%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .elevator-intro { display: none; }
+  .line-mask > span, .wa-pulse::before, .reveal, .marquee { animation: none !important; }
+  .btn-shine::after { display: none; }
+}

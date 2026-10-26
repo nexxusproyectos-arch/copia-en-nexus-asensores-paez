@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { AlertTriangle, ArrowLeft, ArrowRight, Building, Building2, Check, Factory, FileCheck2, Home, Hospital, MessageCircle, RefreshCw, Sparkles, Store, Wrench } from "lucide-react";
+import { AlertTriangle, ArrowLeft, ArrowRight, Building, Building2, Factory, FileCheck2, Home, Hospital, MessageCircle, RefreshCw, Sparkles, Store, Wrench } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import { submitContact } from "@/lib/contact.functions";
 import { waLink } from "@/lib/site";
 
@@ -78,7 +79,7 @@ export function Cotizador({ preset }: { preset?: { need: string; n: number } | u
   const floorsLabel = ["Qué necesitas", "Tu inmueble", "Tus datos"];
 
   return (
-    <section id="cotizador" className="scroll-mt-20 border-b border-border bg-muted py-16 lg:py-24">
+    <section id="cotizador" className="relative scroll-mt-20 border-b border-border bg-muted py-16 lg:py-24">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <p className="eyebrow">Cotizador</p>
@@ -88,7 +89,11 @@ export function Cotizador({ preset }: { preset?: { need: string; n: number } | u
         <div className="rounded-lg bg-background p-6 shadow-sm md:p-8 lg:col-span-8">
           {done ? (
             <div className="py-6 text-center">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground"><Check className="h-7 w-7" /></div>
+              <motion.div initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: "spring", stiffness: 300, damping: 18 }} className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <motion.path d="M5 12.5l4.5 4.5L19 7.5" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.5, delay: 0.25, ease: "easeOut" }} />
+                </svg>
+              </motion.div>
               <h3 className="mt-5 text-2xl font-extrabold">¡Solicitud recibida, {nombre.split(" ")[0]}!</h3>
               <p className="mx-auto mt-2 max-w-md text-muted-foreground">Te contactaremos pronto. Si quieres agilizar, continúa la conversación por WhatsApp con tus respuestas ya escritas.</p>
               <a href={waLink(buildQuoteMessage(answers))} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-md bg-whatsapp px-6 py-3.5 text-sm font-bold text-ink-foreground">
@@ -97,14 +102,26 @@ export function Cotizador({ preset }: { preset?: { need: string; n: number } | u
             </div>
           ) : (
             <>
+              <div className="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                Subiendo al piso
+                <span className="relative inline-block h-6 w-9 overflow-hidden rounded bg-ink text-center font-mono text-sm leading-6 text-primary">
+                  <AnimatePresence initial={false}>
+                    <motion.span key={step} className="absolute inset-0" initial={{ y: 24 }} animate={{ y: 0 }} exit={{ y: -24 }} transition={{ duration: 0.35, ease: [0.76, 0, 0.24, 1] }}>{step}</motion.span>
+                  </AnimatePresence>
+                </span>
+              </div>
               <ol className="mb-8 grid grid-cols-3 gap-2" aria-label="Progreso">
                 {floorsLabel.map((l, i) => (
                   <li key={l}>
-                    <div className={`h-1.5 rounded-full ${step > i ? "bg-primary" : "bg-border"}`} />
-                    <span className={`mt-2 block text-xs font-bold ${step === i + 1 ? "text-foreground" : "text-muted-foreground"}`}>Piso {i + 1} <span className="hidden font-semibold sm:inline">· {l}</span></span>
+                    <div className="h-1.5 overflow-hidden rounded-full bg-border">
+                      <motion.div className="h-full origin-left bg-primary" initial={false} animate={{ scaleX: step > i ? 1 : 0 }} transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }} />
+                    </div>
+                    <span className={`mt-2 flex items-center gap-1 text-xs font-bold ${step === i + 1 ? "text-foreground" : "text-muted-foreground"}`}>Piso {i + 1} <span className="hidden font-semibold sm:inline">· {l}</span></span>
                   </li>
                 ))}
               </ol>
+              <AnimatePresence mode="wait" initial={false} custom={step}>
+              <motion.div key={step} initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -40 }} transition={{ duration: 0.3, ease: [0.22, 0.7, 0.2, 1] }}>
 
               {step === 1 && (
                 <div>
@@ -163,6 +180,8 @@ export function Cotizador({ preset }: { preset?: { need: string; n: number } | u
                   </div>
                 </form>
               )}
+              </motion.div>
+              </AnimatePresence>
             </>
           )}
         </div>
