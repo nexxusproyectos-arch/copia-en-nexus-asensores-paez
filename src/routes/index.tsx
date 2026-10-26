@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Compass, FileCheck2, HardHat, MessageCircle, Phone, ShieldCheck, UserRound } from "lucide-react";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ElevatorIntro } from "@/components/site/ElevatorIntro";
 import { CountUp, Reveal, Stagger, staggerItem } from "@/components/site/motion";
@@ -58,11 +58,11 @@ function Home() {
   const [preset, setPreset] = useState<{ need: string; n: number } | undefined>();
   const [tab, setTab] = useState<"producto" | "servicio">("producto");
   const catalog = SERVICES.filter((s) => s.group === tab);
-  const stats: { key: string; node: React.ReactNode }[] = [
+  const stats: { key: string; node: ReactNode }[] = [
     HOME_STATS.equiposInstalados != null ? { key: "eq", node: <><CountUp to={HOME_STATS.equiposInstalados} prefix="+" /> equipos instalados</> } : null,
     HOME_STATS.edificiosMantenimiento != null ? { key: "ed", node: <><CountUp to={HOME_STATS.edificiosMantenimiento} prefix="+" /> edificios en mantenimiento</> } : null,
     { key: "desde", node: <>Desde {HOME_STATS.desde}</> },
-  ].filter((x): x is { key: string; node: React.ReactNode } => x !== null);
+  ].filter((x): x is { key: string; node: ReactNode } => x !== null);
 
   return (
     <>
