@@ -13,6 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { WhatsAppFloating } from "@/components/site/WhatsApp";
+import { MotionConfig } from "framer-motion";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -140,6 +141,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <MotionConfig reducedMotion="user">
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <a href="#contenido" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded focus:bg-background focus:p-3">Saltar al contenido</a>
       <Header />
@@ -148,6 +150,7 @@ function RootComponent() {
       </main>
       <Footer />
       <WhatsAppFloating />
+      </MotionConfig>
     </QueryClientProvider>
   );
 }
