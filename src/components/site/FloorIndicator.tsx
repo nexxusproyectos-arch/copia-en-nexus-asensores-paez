@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useLocation } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const FLOORS = [
   { id: "inicio", n: 1, label: "Inicio" },
@@ -22,20 +22,24 @@ export function FloorIndicator() {
   const { pathname } = useLocation();
   const [floor, setFloor] = useState(floorForPath(pathname));
   const [dir, setDir] = useState<1 | -1>(1);
-  const prev = useRef(floor.n);
 
   useEffect(() => {
     setFloor(floorForPath(pathname));
     if (pathname !== "/") return;
     const els = FLOORS.map((f) => document.getElementById(f.id)).filter(Boolean) as HTMLElement[];
     if (!els.length) return;
+    let lastY = window.scrollY;
     const onScroll = () => {
+      const y = window.scrollY;
+      if (Math.abs(y - lastY) > 4) { setDir(y > lastY ? 1 : -1); lastY = y; }
+      const atBottom = window.innerHeight + y >= document.documentElement.scrollHeight - 200;
       const mid = window.innerHeight * 0.4;
       let cur = FLOORS[0]!;
       for (const f of FLOORS) {
         const el = document.getElementById(f.id);
         if (el && el.getBoundingClientRect().top <= mid) cur = f;
       }
+      if (atBottom) cur = FLOORS[5]!;
       setFloor((old) => (old.n === cur.n ? old : cur));
     };
     onScroll();
@@ -43,10 +47,6 @@ export function FloorIndicator() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [pathname]);
 
-  useEffect(() => {
-    if (floor.n !== prev.current) setDir(floor.n > prev.current ? 1 : -1);
-    prev.current = floor.n;
-  }, [floor.n]);
 
   return (
     <div className="hidden items-center gap-2 rounded-md bg-ink px-2.5 py-1.5 font-mono text-ink-foreground sm:flex" aria-label={`Piso ${floor.n}: ${floor.label}`} title={floor.label}>
