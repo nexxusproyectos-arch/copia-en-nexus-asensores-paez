@@ -58,11 +58,11 @@ function Home() {
   const [preset, setPreset] = useState<{ need: string; n: number } | undefined>();
   const [tab, setTab] = useState<"producto" | "servicio">("producto");
   const catalog = SERVICES.filter((s) => s.group === tab);
-  const stats: { key: string; node: ReactNode }[] = [
+  const stats = ([
     HOME_STATS.equiposInstalados != null ? { key: "eq", node: <><CountUp to={HOME_STATS.equiposInstalados} prefix="+" /> equipos instalados</> } : null,
     HOME_STATS.edificiosMantenimiento != null ? { key: "ed", node: <><CountUp to={HOME_STATS.edificiosMantenimiento} prefix="+" /> edificios en mantenimiento</> } : null,
     { key: "desde", node: <>Desde {HOME_STATS.desde}</> },
-  ].filter((x): x is { key: string; node: ReactNode } => x !== null);
+  ] as ({ key: string; node: ReactNode } | null)[]).filter((x): x is { key: string; node: ReactNode } => x !== null);
 
   return (
     <>
