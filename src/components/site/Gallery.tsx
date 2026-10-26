@@ -29,9 +29,9 @@ export function Gallery({ limit }: { limit?: number }) {
           </button>
         ))}
       </div>
-      <div className="mt-8 grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-8 columns-1 gap-4 sm:columns-2 lg:columns-3">
         {items.map((p, i) => (
-          <button key={p.src + p.title} onClick={() => setIdx(i)} className={`group relative overflow-hidden rounded-lg bg-muted text-left ${i % 5 === 0 ? "sm:row-span-2" : ""}`} aria-label={`Ver foto: ${p.title}`}>
+          <button key={p.src + p.title} onClick={() => setIdx(i)} className={`group relative mb-4 block w-full break-inside-avoid overflow-hidden rounded-lg bg-muted text-left ${["h-80", "h-56", "h-64"][i % 3]}`} aria-label={`Ver foto: ${p.title}`}>
             <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 to-transparent p-4 text-ink-foreground">
               <span className="text-[0.65rem] font-bold uppercase tracking-widest text-primary">{p.category}</span>

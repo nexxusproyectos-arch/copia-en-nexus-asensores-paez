@@ -1,9 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Compass, HardHat, ShieldCheck, UserRound } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Compass, FileCheck2, HardHat, MessageCircle, Phone, ShieldCheck, UserRound } from "lucide-react";
+import { useState } from "react";
+import { Cotizador } from "@/components/site/Cotizador";
 import { IMG } from "@/lib/images";
 import { SERVICES } from "@/lib/services";
-import { SITE, waLink } from "@/lib/site";
-import { CtaBand, WhatsAppButton } from "@/components/site/WhatsApp";
+import { HOME_STATS, SITE, waLink } from "@/lib/site";
+import { WhatsAppButton } from "@/components/site/WhatsApp";
 import { Testimonials } from "@/components/site/Testimonials";
 import { Gallery } from "@/components/site/Gallery";
 
@@ -20,32 +22,72 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+const PROFILES = [
+  {
+    id: "admin",
+    label: "Soy administrador de propiedad horizontal",
+    sub: "Mantenimiento, certificación NTC 5926 y atención de emergencias para el ascensor de tu conjunto o edificio, con un equipo que responde.",
+    msg: "Hola, administro un conjunto y necesito mantenimiento/certificación del ascensor.",
+  },
+  {
+    id: "constructora",
+    label: "Soy constructora",
+    sub: "Suministro e instalación de ascensores, montacargas y montacoches para tu obra, con acompañamiento técnico desde el diseño hasta la entrega.",
+    msg: "Hola, soy de una constructora y necesito cotizar equipos de transporte vertical para un proyecto.",
+  },
+  {
+    id: "empresa",
+    label: "Empresa / comercio",
+    sub: "Montacargas, escaleras eléctricas y puertas vehiculares automáticas para que tu operación no se detenga.",
+    msg: "Hola, tengo una empresa/comercio y necesito asesoría sobre equipos de transporte vertical o puertas automáticas.",
+  },
+] as const;
+
+const DEFAULT_SUB = "Ascensores, montacargas, montacoches, escaleras eléctricas y puertas automáticas vehiculares. Te acompañamos desde la asesoría hasta la instalación y el mantenimiento.";
 const HERO_MSG = "Hola, Ascensores Páez. Vi su página web y quiero asesoría para mi proyecto.";
 
+function scrollToQuote() {
+  document.getElementById("cotizador")?.scrollIntoView({ behavior: "smooth" });
+}
+
 function Home() {
-  const servicios = SERVICES.filter((s) => s.group === "servicio");
+  const [profile, setProfile] = useState<(typeof PROFILES)[number] | null>(null);
+  const [preset, setPreset] = useState<{ need: string; n: number } | undefined>();
+  const [tab, setTab] = useState<"producto" | "servicio">("producto");
+  const catalog = SERVICES.filter((s) => s.group === tab);
+  const stats = [
+    HOME_STATS.equiposInstalados != null && `+${HOME_STATS.equiposInstalados} equipos instalados`,
+    HOME_STATS.edificiosMantenimiento != null && `+${HOME_STATS.edificiosMantenimiento} edificios en mantenimiento`,
+    `Desde ${HOME_STATS.desde}`,
+  ].filter(Boolean) as string[];
+
   return (
     <>
       {/* Hero */}
       <section className="relative overflow-hidden bg-ink text-ink-foreground">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 pb-16 pt-12 lg:grid-cols-12 lg:gap-0 lg:pb-0 lg:pt-0">
-          <div className="reveal relative z-10 flex flex-col justify-center lg:col-span-6 lg:py-28 lg:pr-12">
+          <div className="reveal relative z-10 flex flex-col justify-center lg:col-span-6 lg:py-24 lg:pr-12">
             <p className="eyebrow">{SITE.name}</p>
             <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
               Movilidad vertical con respaldo técnico <span className="text-primary">a cada paso.</span>
             </h1>
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-ink-muted">
-              Ascensores, montacargas, montacoches, escaleras eléctricas y puertas automáticas vehiculares. Te acompañamos desde la asesoría hasta la instalación y el mantenimiento.
-            </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <WhatsAppButton message={HERO_MSG} label="Solicitar asesoría por WhatsApp" />
-              <a href="#soluciones" className="inline-flex items-center justify-center gap-2 rounded-md border border-ink-muted/40 px-6 py-3.5 text-sm font-bold hover:border-ink-foreground">
-                Ver soluciones <ArrowRight className="h-4 w-4" />
-              </a>
+            <div className="mt-7 flex flex-wrap gap-2" role="radiogroup" aria-label="Tu perfil">
+              {PROFILES.map((p) => (
+                <button key={p.id} role="radio" aria-checked={profile?.id === p.id} onClick={() => setProfile(profile?.id === p.id ? null : p)} className={`rounded-full border px-4 py-2 text-xs font-bold transition sm:text-sm ${profile?.id === p.id ? "border-primary bg-primary text-primary-foreground" : "border-ink-muted/40 hover:border-ink-foreground"}`}>
+                  {p.label}
+                </button>
+              ))}
             </div>
-            <ul className="mt-12 grid gap-4 border-t border-ink-muted/20 pt-8 text-sm sm:grid-cols-3">
-              {["Acompañamiento técnico", "Soluciones según cada proyecto", "Instalación y mantenimiento"].map((t) => (
-                <li key={t} className="flex items-start gap-2"><span className="mt-1.5 h-2 w-2 shrink-0 bg-primary" />{t}</li>
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-ink-muted" aria-live="polite">{profile?.sub ?? DEFAULT_SUB}</p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <WhatsAppButton message={profile?.msg ?? HERO_MSG} label="Solicitar asesoría por WhatsApp" />
+              <button onClick={scrollToQuote} className="inline-flex items-center justify-center gap-2 rounded-md border border-ink-muted/40 px-6 py-3.5 text-sm font-bold hover:border-ink-foreground">
+                Cotizar en 60 segundos <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
+            <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-ink-muted/20 pt-6 text-sm font-bold">
+              {stats.map((t) => (
+                <li key={t} className="flex items-center gap-2"><span className="h-2 w-2 shrink-0 bg-primary" />{t}</li>
               ))}
             </ul>
           </div>
@@ -61,6 +103,8 @@ function Home() {
         </div>
       </section>
 
+      <Cotizador preset={preset} />
+
       {/* Soluciones */}
       <section id="soluciones" className="scroll-mt-20 py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-5">
@@ -69,19 +113,23 @@ function Home() {
               <p className="eyebrow">Catálogo de soluciones</p>
               <h2 className="mt-3 text-3xl font-extrabold tracking-tight md:text-5xl">Encuentra la solución que necesita tu proyecto.</h2>
             </div>
-            <p className="text-muted-foreground lg:col-span-5">Selecciona una categoría para conocer sus aplicaciones, beneficios y preguntas frecuentes, o escríbenos directamente.</p>
+            <div className="flex gap-2 lg:col-span-5 lg:justify-end" role="tablist" aria-label="Tipo de solución">
+              {([["producto", "Equipos"], ["servicio", "Servicios"]] as const).map(([k, l]) => (
+                <button key={k} role="tab" aria-selected={tab === k} onClick={() => setTab(k)} className={`rounded-full border px-5 py-2.5 text-sm font-bold transition ${tab === k ? "border-foreground bg-foreground text-background" : "border-border hover:border-foreground"}`}>
+                  {l} ({SERVICES.filter((s) => s.group === k).length})
+                </button>
+              ))}
+            </div>
           </div>
-          <div className="mt-12 grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((s, i) => (
-              <Link key={s.slug} to="/servicios/$slug" params={{ slug: s.slug }} className="group flex flex-col bg-background">
-                <div className="relative h-52 overflow-hidden bg-muted">
-                  <img src={s.image} alt={s.imageAlt} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />
-                  <span className="absolute left-4 top-4 rounded bg-ink px-2 py-1 text-xs font-extrabold text-ink-foreground">{String(i + 1).padStart(2, "0")}</span>
-                </div>
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-lg font-extrabold">{s.name}</h3>
-                  <p className="mt-2 flex-1 text-sm text-muted-foreground">{s.short}</p>
-                  <span className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-primary">Ver solución <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></span>
+          <div className={`no-scrollbar -mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 md:mx-0 md:grid md:overflow-visible md:px-0 md:grid-cols-3 ${tab === "producto" ? "md:grid-rows-[repeat(3,13rem)]" : "md:grid-rows-[repeat(2,15rem)]"}`}>
+            {catalog.map((s, i) => (
+              <Link key={s.slug} to="/servicios/$slug" params={{ slug: s.slug }} className={`group relative w-[82%] shrink-0 snap-start overflow-hidden rounded-lg bg-ink text-ink-foreground md:w-auto ${i === 0 ? "h-80 md:col-span-2 md:row-span-2 md:h-auto" : "h-80 md:h-auto"} ${tab === "servicio" && i === 0 ? "md:col-span-1" : ""} ${tab === "servicio" && i === 3 ? "md:col-span-2" : ""}`}>
+                <img src={s.image} alt={s.imageAlt} loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-80 transition duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+                <div className="relative flex h-full flex-col justify-end p-6">
+                  <h3 className={`font-extrabold ${i === 0 ? "text-2xl md:text-3xl" : "text-lg"}`}>{s.name}</h3>
+                  <p className={`mt-1 text-sm text-ink-muted ${i === 0 ? "" : "line-clamp-2"}`}>{s.short}</p>
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-primary">Ver solución <ArrowUpRight className="h-4 w-4" /></span>
                 </div>
               </Link>
             ))}
@@ -114,6 +162,22 @@ function Home() {
         </div>
       </section>
 
+      {/* Normativa */}
+      <section className="border-b border-border py-16">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 md:flex-row md:items-center md:justify-between">
+          <div className="flex gap-5">
+            <FileCheck2 className="h-12 w-12 shrink-0 text-primary" />
+            <div>
+              <h2 className="text-2xl font-extrabold tracking-tight md:text-3xl">¿Tu ascensor está al día con la NTC 5926?</h2>
+              <p className="mt-2 max-w-2xl text-muted-foreground">La revisión periódica es obligatoria y un equipo no certificado puede generar sanciones y riesgos para los residentes. Te ayudamos a prepararlo para la inspección.</p>
+            </div>
+          </div>
+          <button onClick={() => { setPreset({ need: "Certificación NTC 5926", n: Date.now() }); scrollToQuote(); }} className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-md bg-primary px-6 text-sm font-bold text-primary-foreground hover:brightness-110">
+            Solicitar diagnóstico <ArrowRight className="h-4 w-4" />
+          </button>
+        </div>
+      </section>
+
       {/* Proyectos */}
       <section className="py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-5">
@@ -125,24 +189,6 @@ function Home() {
             <Link to="/proyectos" className="inline-flex items-center gap-1 text-sm font-bold text-primary">Ver todos los proyectos <ArrowRight className="h-4 w-4" /></Link>
           </div>
           <div className="mt-10"><Gallery /></div>
-        </div>
-      </section>
-
-      {/* Servicios técnicos */}
-      <section className="border-y border-border py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-5">
-          <p className="eyebrow">Servicios técnicos</p>
-          <h2 className="mt-3 max-w-3xl text-3xl font-extrabold tracking-tight md:text-5xl">Del montaje al mantenimiento, un solo equipo.</h2>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {servicios.map((s, i) => (
-              <Link key={s.slug} to="/servicios/$slug" params={{ slug: s.slug }} className="group border-t-2 border-foreground pt-6 transition hover:border-primary">
-                <span className="text-sm font-extrabold text-primary">0{i + 1}</span>
-                <h3 className="mt-3 text-xl font-extrabold">{s.name}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{s.short}</p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold group-hover:text-primary">Conocer más <ArrowRight className="h-4 w-4" /></span>
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -169,7 +215,22 @@ function Home() {
         </div>
       </section>
 
-      <CtaBand title="Cuéntanos tu proyecto y te asesoramos por WhatsApp." message={HERO_MSG} />
+      {/* CTA final */}
+      <section className="relative overflow-hidden bg-ink text-ink-foreground">
+        <div className="absolute inset-y-0 left-0 w-2 bg-primary" />
+        <div className="mx-auto grid max-w-7xl gap-8 px-5 py-20 lg:grid-cols-12 lg:items-center lg:py-24">
+          <h2 className="text-4xl font-extrabold leading-tight tracking-tight md:text-6xl lg:col-span-7">Tu edificio no puede quedarse <span className="text-primary">quieto.</span></h2>
+          <div className="lg:col-span-5">
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <a href={waLink(profile?.msg ?? HERO_MSG)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-14 flex-1 items-center justify-center gap-2 rounded-md bg-primary px-6 text-sm font-bold text-primary-foreground hover:brightness-110"><MessageCircle className="h-5 w-5" /> WhatsApp</a>
+              <a href={`tel:${SITE.phoneE164}`} className="inline-flex min-h-14 flex-1 items-center justify-center gap-2 rounded-md border border-ink-muted/40 px-6 text-sm font-bold hover:border-ink-foreground"><Phone className="h-5 w-5" /> Llamar</a>
+            </div>
+            {HOME_STATS.horasRespuesta != null && (
+              <p className="mt-4 flex items-center gap-2 text-sm text-ink-muted"><ShieldCheck className="h-4 w-4 text-primary" /> Respuesta en menos de {HOME_STATS.horasRespuesta} horas hábiles</p>
+            )}
+          </div>
+        </div>
+      </section>
     </>
   );
 }

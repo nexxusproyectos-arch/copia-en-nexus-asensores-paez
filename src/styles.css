@@ -89,3 +89,17 @@
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: none; }
 }
+
+@utility marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}

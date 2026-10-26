@@ -4,6 +4,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { IMG } from "@/lib/images";
 import { SERVICES } from "@/lib/services";
 import { SITE, WA_GENERAL, waLink } from "@/lib/site";
+import { UrgencyBar } from "./UrgencyBar";
 
 const nav = [
   { to: "/", label: "Inicio" },
@@ -16,6 +17,8 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [sol, setSol] = useState(false);
   return (
+    <>
+    <div className="relative"><UrgencyBar /></div>
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 lg:h-20">
         <Link to="/" className="flex shrink-0 items-center gap-2" aria-label={`${SITE.name} – inicio`}>
@@ -75,5 +78,6 @@ export function Header() {
         </nav>
       )}
     </header>
+    </>
   );
 }
