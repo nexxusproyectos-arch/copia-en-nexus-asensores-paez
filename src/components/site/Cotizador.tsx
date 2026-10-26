@@ -79,7 +79,7 @@ export function Cotizador({ preset }: { preset?: { need: string; n: number } | u
   const floorsLabel = ["Qué necesitas", "Tu inmueble", "Tus datos"];
 
   return (
-    <section id="cotizador" className="scroll-mt-20 border-b border-border bg-muted py-16 lg:py-24">
+    <section id="cotizador" className="relative scroll-mt-20 border-b border-border bg-muted py-16 lg:py-24">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <p className="eyebrow">Cotizador</p>
@@ -102,6 +102,14 @@ export function Cotizador({ preset }: { preset?: { need: string; n: number } | u
             </div>
           ) : (
             <>
+              <div className="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                Subiendo al piso
+                <span className="relative inline-block h-6 w-9 overflow-hidden rounded bg-ink text-center font-mono text-sm leading-6 text-primary">
+                  <AnimatePresence initial={false}>
+                    <motion.span key={step} className="absolute inset-0" initial={{ y: 24 }} animate={{ y: 0 }} exit={{ y: -24 }} transition={{ duration: 0.35, ease: [0.76, 0, 0.24, 1] }}>{step}</motion.span>
+                  </AnimatePresence>
+                </span>
+              </div>
               <ol className="mb-8 grid grid-cols-3 gap-2" aria-label="Progreso">
                 {floorsLabel.map((l, i) => (
                   <li key={l}>
