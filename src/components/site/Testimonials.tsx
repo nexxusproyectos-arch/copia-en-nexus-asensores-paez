@@ -31,7 +31,7 @@ export function Testimonials() {
   const logos = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
 
   return (
-    <section className="bg-muted py-20 lg:py-28">
+    <section id="testimonios" className="scroll-mt-20 bg-muted py-20 lg:py-28">
       <div className="overflow-hidden border-y border-border bg-background py-6" aria-label="Clientes">
         <div className="marquee flex w-max gap-6 hover:[animation-play-state:paused]">
           {logos.map((c, k) => (
