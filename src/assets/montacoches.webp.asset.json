@@ -1,11 +1,11 @@
 {
+  "version": 1,
   "asset_id": "fc0aff33-60a1-4c1e-a9e9-f1a4791f6706",
-  "content_type": "image/webp",
-  "created_at": "2026-10-25T16:45:39Z",
-  "original_filename": "montacoches.webp",
-  "project_id": "36d899d2-28ba-4c84-a24d-0bdde767ba6a",
-  "r2_key": "a/v1/36d899d2-28ba-4c84-a24d-0bdde767ba6a/fc0aff33-60a1-4c1e-a9e9-f1a4791f6706/montacoches.webp",
-  "size": 46942,
+  "project_id": "a8d62704-0384-44e6-83ba-622067306555",
   "url": "/__l5e/assets-v1/fc0aff33-60a1-4c1e-a9e9-f1a4791f6706/montacoches.webp",
-  "version": 1
+  "r2_key": "a/v1/a8d62704-0384-44e6-83ba-622067306555/fc0aff33-60a1-4c1e-a9e9-f1a4791f6706/montacoches.webp",
+  "original_filename": "montacoches.webp",
+  "size": 46942,
+  "content_type": "image/webp",
+  "created_at": "2026-10-25T16:45:39Z"
 }

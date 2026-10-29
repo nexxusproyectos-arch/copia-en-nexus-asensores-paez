@@ -1,0 +1,1 @@
+-- Baseline for the new project database: intentionally empty.
