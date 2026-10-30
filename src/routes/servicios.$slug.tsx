@@ -1,11 +1,18 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowRight, Check } from "lucide-react";
-import { getService, SERVICES } from "@/lib/services";
+import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
+import { ArrowRight, Check, ClipboardList } from "lucide-react";
+import { elevatorAnchor, getService } from "@/lib/services";
 import { SITE } from "@/lib/site";
 import { CtaBand, WhatsAppButton } from "@/components/site/WhatsApp";
+import { ElevatorServices } from "@/components/site/ElevatorServices";
+import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/servicios/$slug")({
+  staticData: { sitemap: true },
+  beforeLoad: ({ params }) => {
+    const hash = elevatorAnchor(params.slug);
+    if (hash) throw redirect({ to: "/servicios/$slug", params: { slug: "ascensores" }, hash, statusCode: 301 });
+  },
   loader: ({ params }) => {
     const service = getService(params.slug);
     if (!service) throw notFound();
@@ -32,7 +39,7 @@ export const Route = createFileRoute("/servicios/$slug")({
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@graph": [
-              { "@type": "Service", name: s.name, description: s.seoDescription, areaServed: "Bogotá, Colombia", provider: { "@type": "LocalBusiness", name: SITE.name, telephone: SITE.phoneE164 } },
+              { "@type": "Service", name: s.name, description: s.seoDescription, areaServed: "Colombia", provider: { "@type": "LocalBusiness", name: SITE.name, telephone: SITE.phoneE164 } },
               { "@type": "FAQPage", mainEntity: s.faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) },
             ],
           }),
@@ -45,7 +52,8 @@ export const Route = createFileRoute("/servicios/$slug")({
 
 function ServicePage() {
   const { service: s } = Route.useLoaderData();
-  const related = s.related.map(getService).filter(Boolean) as typeof SERVICES;
+  if (s.slug === "ascensores") return <ElevatorServices />;
+  const related = [...new Set(s.related.map((slug) => elevatorAnchor(slug) ? "ascensores" : slug))].map(getService).filter((service) => service !== undefined);
   return (
     <>
       <section className="bg-ink text-ink-foreground">
@@ -59,7 +67,7 @@ function ServicePage() {
             <p className="mt-6 text-lg leading-relaxed text-ink-muted">{s.intro}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <WhatsAppButton message={s.whatsapp} label="Cotizar por WhatsApp" />
-              <Link to="/contacto" className="inline-flex items-center justify-center rounded-md border border-ink-muted/40 px-6 py-3.5 text-sm font-bold hover:border-ink-foreground">Enviar formulario</Link>
+              <Button asChild className="h-auto min-h-12 whitespace-normal px-6 py-3.5 font-bold"><Link to="/contacto" search={{ servicio: s.slug }}><ClipboardList />Prefiero Dejar Datos</Link></Button>
             </div>
           </div>
           <div className="overflow-hidden rounded-lg">
@@ -126,7 +134,7 @@ function ServicePage() {
 
       <section className="border-t border-border py-16">
         <div className="mx-auto max-w-7xl px-5">
-          <h2 className="text-2xl font-extrabold">Servicios relacionadas</h2>
+          <h2 className="text-2xl font-extrabold">Servicios relacionados</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             {related.map((r) => (
               <Link key={r.slug} to="/servicios/$slug" params={{ slug: r.slug }} className="group flex items-center justify-between rounded-lg border border-border p-5 hover:border-primary">

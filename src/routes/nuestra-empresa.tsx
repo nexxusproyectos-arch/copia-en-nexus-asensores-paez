@@ -4,6 +4,7 @@ import { Cpu, Handshake, ShieldCheck } from "lucide-react";
 import { IMG } from "@/lib/images";
 
 export const Route = createFileRoute("/nuestra-empresa")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Nuestra Empresa | Ascensores Páez S.A.S." },

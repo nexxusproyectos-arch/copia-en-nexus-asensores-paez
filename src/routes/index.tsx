@@ -3,6 +3,7 @@ import { ArrowRight, ArrowUpRight, ClipboardList, FileCheck2, Settings2, ShieldC
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ElevatorIntro } from "@/components/site/ElevatorIntro";
 import { Reveal } from "@/components/site/motion";
+import { NormativeSection } from "@/components/site/NormativeSection";
 import { ContactForm } from "@/components/site/ContactForm";
 import { Button } from "@/components/ui/button";
 import { IMG } from "@/lib/images";
@@ -13,6 +14,7 @@ import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { Testimonials } from "@/components/site/Testimonials";
 
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Ascensores Páez S.A.S. | Transporte vertical, mantenimiento y adecuación técnica" },
@@ -67,12 +69,7 @@ function Home() {
         </div>
       </div>
     </section>
-    <section id="normativa" className="scroll-mt-20 border-y border-border bg-muted py-16 lg:py-20">
-      <Reveal className="mx-auto grid max-w-7xl gap-8 px-5 lg:grid-cols-[auto_1fr]">
-        <FileCheck2 className="h-12 w-12 text-primary" />
-        <div><h2 className="max-w-4xl text-3xl font-extrabold leading-tight md:text-4xl">Evite sanciones y riesgos: Adecuamos sus equipos bajo la norma NTC 5926</h2><p className="mt-6 max-w-4xl leading-relaxed text-muted-foreground">En Colombia, la revisión técnico-mecánica de sistemas de transporte vertical y puertas automáticas es obligatoria. Nos encargamos de la corrección precisa de los hallazgos mecánicos y eléctricos emitidos por los entes inspectores, dejando sus equipos listos para superar la certificación sin contratiempos.</p><div className="mt-8"><WhatsAppButton message="Hola, necesito cotizar la corrección de hallazgos NTC 5926" label="Cotizar Corrección de Hallazgos por WhatsApp" /></div></div>
-      </Reveal>
-    </section>
+    <NormativeSection />
     <section id="servicios-tecnicos" className="scroll-mt-20 bg-ink py-16 text-ink-foreground lg:py-20">
       <div className="mx-auto max-w-7xl px-5"><Reveal><p className="eyebrow">Servicios técnicos</p></Reveal><div className="mt-8 grid gap-x-12 gap-y-10 md:grid-cols-2">
         {TECHNICAL.map((item, i) => {

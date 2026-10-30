@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SITE } from "@/lib/site";
 
 export const Route = createFileRoute("/politica-de-privacidad")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Política de tratamiento de datos personales | Ascensores Páez" },

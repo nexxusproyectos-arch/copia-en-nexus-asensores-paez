@@ -1,14 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { fallback, zodValidator } from "@tanstack/zod-adapter";
+import { z } from "zod";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { contactServiceSelection } from "@/lib/contact-details";
 import { SITE } from "@/lib/site";
 import { ContactForm } from "@/components/site/ContactForm";
 import { WhatsAppButton } from "@/components/site/WhatsApp";
 
 export const Route = createFileRoute("/contacto")({
+  staticData: { sitemap: true },
+  validateSearch: zodValidator(z.object({ servicio: fallback(z.string(), "").default("") })),
   head: () => ({
     meta: [
-      { title: "Contacto | Ascensores Páez S.A.S. Bogotá" },
-      { name: "description", content: "Contacta a Ascensores Páez S.A.S. por WhatsApp al +57 321 900 5713, correo o formulario. Ac. 153 #103b-76, Bogotá." },
+      { title: "Contacto | Ascensores Páez S.A.S. Colombia" },
+      { name: "description", content: "Contacte a Ascensores Páez S.A.S. por WhatsApp, correo o formulario. Atención de transporte vertical y accesos automáticos a nivel nacional en Colombia." },
       { property: "og:title", content: "Contacto | Ascensores Páez" },
       { property: "og:description", content: "Escríbenos por WhatsApp o déjanos tus datos y te contactamos." },
       { property: "og:type", content: "website" },
@@ -20,6 +25,7 @@ export const Route = createFileRoute("/contacto")({
 });
 
 function Contact() {
+  const { servicio } = Route.useSearch();
   return <>
     <section className="bg-ink py-16 text-ink-foreground lg:py-20">
       <div className="mx-auto max-w-7xl px-5">
@@ -38,7 +44,7 @@ function Contact() {
               <li className="flex gap-3"><MapPin className="h-5 w-5 shrink-0 text-primary" /><div><span className="block font-bold">Dirección</span><span className="text-muted-foreground">{SITE.address}</span></div></li>
             </ul>
         </aside>
-        <div className="min-w-0 lg:col-span-8"><ContactForm contactPage /></div>
+        <div className="min-w-0 lg:col-span-8"><ContactForm key={servicio} contactPage initialService={contactServiceSelection(servicio)} /></div>
       </div>
     </section>
   </>;

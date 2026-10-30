@@ -12,6 +12,23 @@ export const CONTACT_SERVICES = [
   "Otro",
 ] as const;
 
+const SERVICE_SELECTIONS: Record<string, (typeof CONTACT_SERVICES)[number]> = {
+  "ascensores-pasajeros": CONTACT_SERVICES[0],
+  "ascensores-carga": CONTACT_SERVICES[1],
+  montacoches: CONTACT_SERVICES[2],
+  "movilidad-reducida": CONTACT_SERVICES[3],
+  "puertas-vehiculares": CONTACT_SERVICES[4],
+  "escaleras-electricas": CONTACT_SERVICES[5],
+  instalacion: CONTACT_SERVICES[6],
+  modernizacion: CONTACT_SERVICES[7],
+  mantenimiento: CONTACT_SERVICES[8],
+  "adecuacion-normativa": CONTACT_SERVICES[9],
+};
+
+export function contactServiceSelection(slug: string): string {
+  return SERVICE_SELECTIONS[slug] ?? "";
+}
+
 export function contactWhatsAppMessage(data: { nombre: string; telefono: string; correo?: string | undefined; empresa?: string | undefined; ciudad?: string | undefined; servicio: string; mensaje: string }) {
   return [
     `Nombre y Apellido: ${data.nombre}`,
