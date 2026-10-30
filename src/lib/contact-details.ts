@@ -12,7 +12,7 @@ export const CONTACT_SERVICES = [
   "Otro",
 ] as const;
 
-export function contactWhatsAppMessage(data: { nombre: string; telefono: string; correo?: string; empresa?: string; ciudad?: string; servicio: string; mensaje: string }) {
+export function contactWhatsAppMessage(data: { nombre: string; telefono: string; correo?: string | undefined; empresa?: string | undefined; ciudad?: string | undefined; servicio: string; mensaje: string }) {
   return [
     `Nombre y Apellido: ${data.nombre}`,
     `Teléfono / WhatsApp: ${data.telefono}`,
