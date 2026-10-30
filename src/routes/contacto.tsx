@@ -12,7 +12,7 @@ export const Route = createFileRoute("/contacto")({
   validateSearch: zodValidator(z.object({ servicio: fallback(z.string(), "").default("") })),
   search: { middlewares: [({ search, next }) => {
     const result = next(search);
-    if (result["servicio"] === "") delete result["servicio"];
+    if (result["servicio"] === "") Reflect.deleteProperty(result, "servicio");
     return result;
   }] },
   head: () => ({
