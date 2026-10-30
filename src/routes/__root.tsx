@@ -16,6 +16,7 @@ import { WhatsAppFloating } from "@/components/site/WhatsApp";
 import { MotionConfig } from "framer-motion";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SITE } from "@/lib/site";
 import { trackEvent } from "@/lib/tracking";
 
 function NotFoundComponent() {
@@ -79,12 +80,13 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  staticData: { sitemap: false },
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Ascensores Páez S.A.S. | Transporte vertical en Bogotá" },
-      { name: "description", content: "Ascensores, montacargas, montacoches, escaleras eléctricas y puertas vehiculares. Instalación y mantenimiento en Bogotá." },
+      { title: "Ascensores Páez S.A.S. | Transporte vertical en Colombia" },
+      { name: "description", content: "Ascensores, montacargas, montacoches, escaleras eléctricas y puertas vehiculares. Instalación y mantenimiento a nivel nacional en Colombia." },
       { name: "author", content: "Ascensores Páez S.A.S." },
       { property: "og:site_name", content: "Ascensores Páez S.A.S." },
       { property: "og:locale", content: "es_CO" },
@@ -108,9 +110,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
-          name: "Ascensores Páez S.A.S.",
-          telephone: "+573219005713",
-          email: "ascensorespaezsas@gmail.com",
+          name: SITE.name,
+          telephone: SITE.phoneE164,
+          email: SITE.email,
+          areaServed: "Colombia",
           foundingDate: "2018-12",
           address: { "@type": "PostalAddress", streetAddress: "Ac. 153 #103b-76 Local 2-08", addressLocality: "Bogotá", addressRegion: "Bogotá D. C.", addressCountry: "CO" },
         }),
