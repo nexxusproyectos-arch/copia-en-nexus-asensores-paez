@@ -15,6 +15,7 @@ import { Route as NosotrosRouteImport } from './routes/nosotros'
 import { Route as NuestraEmpresaRouteImport } from './routes/nuestra-empresa'
 import { Route as PoliticaDePrivacidadRouteImport } from './routes/politica-de-privacidad'
 import { Route as ProyectosRouteImport } from './routes/proyectos'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServiciosSlugRouteImport } from './routes/servicios.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -47,6 +48,11 @@ const ProyectosRoute = ProyectosRouteImport.update({
   path: '/proyectos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServiciosSlugRoute = ServiciosSlugRouteImport.update({
   id: '/servicios/$slug',
   path: '/servicios/$slug',
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/nuestra-empresa': typeof NuestraEmpresaRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/proyectos': typeof ProyectosRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/nuestra-empresa': typeof NuestraEmpresaRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/proyectos': typeof ProyectosRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
 }
 export interface FileRoutesById {
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/nuestra-empresa': typeof NuestraEmpresaRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/proyectos': typeof ProyectosRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/nuestra-empresa'
     | '/politica-de-privacidad'
     | '/proyectos'
+    | '/sitemap.xml'
     | '/servicios/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/nuestra-empresa'
     | '/politica-de-privacidad'
     | '/proyectos'
+    | '/sitemap.xml'
     | '/servicios/$slug'
   id:
     | '__root__'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/nuestra-empresa'
     | '/politica-de-privacidad'
     | '/proyectos'
+    | '/sitemap.xml'
     | '/servicios/$slug'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   NuestraEmpresaRoute: typeof NuestraEmpresaRoute
   PoliticaDePrivacidadRoute: typeof PoliticaDePrivacidadRoute
   ProyectosRoute: typeof ProyectosRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ServiciosSlugRoute: typeof ServiciosSlugRoute
 }
 
@@ -165,6 +178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProyectosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/servicios/$slug': {
       id: '/servicios/$slug'
       path: '/servicios/$slug'
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   NuestraEmpresaRoute: NuestraEmpresaRoute,
   PoliticaDePrivacidadRoute: PoliticaDePrivacidadRoute,
   ProyectosRoute: ProyectosRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   ServiciosSlugRoute: ServiciosSlugRoute,
 }
 export const routeTree = rootRouteImport
