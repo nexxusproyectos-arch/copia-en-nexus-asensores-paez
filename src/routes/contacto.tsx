@@ -10,7 +10,7 @@ import { WhatsAppButton } from "@/components/site/WhatsApp";
 export const Route = createFileRoute("/contacto")({
   staticData: { sitemap: true },
   validateSearch: zodValidator(z.object({ servicio: fallback(z.string(), "").default("") })),
-  search: { middlewares: [stripSearchParams({ servicio: "" })] },
+  search: { middlewares: [stripSearchParams<{ servicio?: string }>({ servicio: "" })] },
   head: () => ({
     meta: [
       { title: "Contacto | Ascensores Páez S.A.S. Colombia" },
