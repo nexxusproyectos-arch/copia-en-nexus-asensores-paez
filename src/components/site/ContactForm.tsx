@@ -12,7 +12,7 @@ const inputClass = "w-full rounded-md border border-input bg-background px-4 py-
 export function ContactForm() {
   const send = useServerFn(submitContact);
   const reduce = useReducedMotion();
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Partial<Record<"nombre" | "telefono" | "correo" | "empresa" | "ciudad" | "mensaje" | "acepta", string>>>({});
   const [status, setStatus] = useState<"idle" | "loading" | "ok" | "error">("idle");
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -49,6 +49,6 @@ export function ContactForm() {
   </form>;
 }
 
-function Field({ label, name, error, children }: { label: string; name: string; error?: string; children: ReactNode }) {
+function Field({ label, name, error, children }: { label: string; name: string; error?: string | undefined; children: ReactNode }) {
   return <div><label htmlFor={`form-${name}`} className="mb-2 block text-sm font-bold">{label}</label>{children}{error && <p className="mt-2 text-xs text-destructive">{error}</p>}</div>;
 }
