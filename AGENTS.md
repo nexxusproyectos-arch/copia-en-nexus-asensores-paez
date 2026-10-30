@@ -16,3 +16,4 @@
 - The home single-view lead form reuses the contact server function; optional building/company and city are validated and stored with the request text so all lead context is retained in the existing storage.
 - Master service navigation uses `MASTER_SERVICES` and the existing dynamic service template; preserve old detail URLs and redirect the old company URL to the current company page.
 - Shared delegated link tracking emits `click_whatsapp` and `click_llamar` to dataLayer; forms emit `Lead` only after a successful server response.
+- Home and Contact share ContactForm; its contact-page variant selects a service and retains submitted context for WhatsApp so both pages use the same validated storage flow. Contact service options and WhatsApp formatting live in a browser-safe helper to avoid duplicating presentation logic.
