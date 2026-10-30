@@ -1,4 +1,6 @@
 # Client changes
+- [x] Use the passenger cabin photo only for the Home Ascensores card.
+- [x] Omit empty servicio parameters from Contact URLs.
 ## Final service changes
 - [x] Apply exact elevator blocks and shared NTC section.
 - [x] Update redirects, related links, contact preselection and service buttons.

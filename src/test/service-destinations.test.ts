@@ -7,6 +7,11 @@ import { createRouter } from "@tanstack/react-router";
 import { QueryClient } from "@tanstack/react-query";
 
 describe("final client service destinations", () => {
+  it("omits an empty servicio parameter from contact URLs", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    expect(router.buildLocation({ to: "/contacto", search: { servicio: "" } }).href).toBe("/contacto");
+    expect(router.buildLocation({ to: "/contacto", search: { servicio: "ascensores-carga" } }).href).toBe("/contacto?servicio=ascensores-carga");
+  });
   it.each([
     ["ascensores-pasajeros", "pasajeros", "Ascensores para Pasajeros"],
     ["ascensores-carga", "carga", "Ascensores de Carga (Montacargas)"],
