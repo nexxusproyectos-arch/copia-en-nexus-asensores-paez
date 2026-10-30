@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { fallback, zodValidator } from "@tanstack/zod-adapter";
+import { z } from "zod";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { contactServiceSelection } from "@/lib/contact-details";
 import { SITE } from "@/lib/site";
@@ -7,7 +9,7 @@ import { WhatsAppButton } from "@/components/site/WhatsApp";
 
 export const Route = createFileRoute("/contacto")({
   staticData: { sitemap: true },
-  validateSearch: (search: Record<string, unknown>) => ({ servicio: typeof search.servicio === "string" ? search.servicio : "" }),
+  validateSearch: zodValidator(z.object({ servicio: fallback(z.string(), "").default("") })),
   head: () => ({
     meta: [
       { title: "Contacto | Ascensores Páez S.A.S. Colombia" },
