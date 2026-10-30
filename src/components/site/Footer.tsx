@@ -27,6 +27,7 @@ export function Footer() {
         <div>
           <h3 className="eyebrow">Empresa</h3>
           <ul className="mt-4 space-y-2 text-sm text-ink-muted">
+            <li><Link to="/" className="hover:text-ink-foreground">Inicio</Link></li>
             <li><Link to="/nuestra-empresa" className="hover:text-ink-foreground">Nuestra Empresa</Link></li>
             <li><Link to="/contacto" className="hover:text-ink-foreground">Contacto</Link></li>
             <li><Link to="/politica-de-privacidad" className="hover:text-ink-foreground">Política de privacidad</Link></li>
