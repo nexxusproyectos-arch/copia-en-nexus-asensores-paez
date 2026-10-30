@@ -21,6 +21,9 @@ export const Route = createFileRoute("/servicios/$slug")({
         { property: "og:title", content: s.seoTitle },
         { property: "og:description", content: s.seoDescription },
         { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { property: "og:image", content: s.image },
+        { name: "twitter:image", content: s.image },
       ],
       links: [{ rel: "canonical", href: `/servicios/${params.slug}` }],
       scripts: [
@@ -49,7 +52,7 @@ function ServicePage() {
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 lg:grid-cols-2 lg:items-center lg:py-20">
           <div className="reveal">
             <nav aria-label="Ruta" className="text-xs text-ink-muted">
-              <Link to="/" className="hover:text-ink-foreground">Inicio</Link> / <span>Soluciones</span> / <span className="text-ink-foreground">{s.name}</span>
+              <Link to="/" className="hover:text-ink-foreground">Inicio</Link> / <span>Servicios</span> / <span className="text-ink-foreground">{s.name}</span>
             </nav>
             <p className="eyebrow mt-6">{s.name}</p>
             <h1 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight md:text-5xl">{s.heroTitle}</h1>
@@ -123,7 +126,7 @@ function ServicePage() {
 
       <section className="border-t border-border py-16">
         <div className="mx-auto max-w-7xl px-5">
-          <h2 className="text-2xl font-extrabold">Soluciones relacionadas</h2>
+          <h2 className="text-2xl font-extrabold">Servicios relacionadas</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             {related.map((r) => (
               <Link key={r.slug} to="/servicios/$slug" params={{ slug: r.slug }} className="group flex items-center justify-between rounded-lg border border-border p-5 hover:border-primary">

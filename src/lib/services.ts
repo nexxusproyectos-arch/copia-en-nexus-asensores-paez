@@ -273,4 +273,31 @@ export const SERVICES: Service[] = [
   },
 ];
 
-export const getService = (slug: string) => SERVICES.find((s) => s.slug === slug);
+// Consolidated master service reuses the approved existing equipment content.
+const elevatorTypes = SERVICES.filter((s) => ["ascensores-pasajeros", "ascensores-carga", "montacoches", "movilidad-reducida"].includes(s.slug));
+export const MASTER_SERVICES: Service[] = [
+  {
+    slug: "ascensores", name: "Ascensores",
+    short: "Diseño, instalación, mantenimiento y modernización de sistemas de transporte vertical (Pasajeros, Carga, Montacoches y Movilidad Reducida).",
+    seoTitle: "Ascensores | Ascensores Páez S.A.S.",
+    seoDescription: "Diseño, instalación, mantenimiento y modernización de sistemas de transporte vertical (Pasajeros, Carga, Montacoches y Movilidad Reducida).",
+    heroTitle: "Ascensores",
+    intro: "Diseño, instalación, mantenimiento y modernización de sistemas de transporte vertical (Pasajeros, Carga, Montacoches y Movilidad Reducida).",
+    image: IMG.lobby, imageAlt: "Lobby con ascensores",
+    gallery: elevatorTypes.map((s) => ({ src: s.image, alt: s.imageAlt })),
+    applications: elevatorTypes.map((s) => s.name),
+    benefits: elevatorTypes.flatMap((s) => s.benefits).slice(0, 3),
+    faqs: elevatorTypes.flatMap((s) => s.faqs).slice(0, 3),
+    related: ["mantenimiento", "modernizacion", "adecuacion-normativa"],
+    whatsapp: "Hola, Ascensores Páez. Quiero cotizar y recibir asesoría sobre ascensores.", group: "producto",
+  },
+  ...SERVICES.filter((s) => ["puertas-vehiculares", "escaleras-electricas"].includes(s.slug)).map((s) => ({
+    ...s,
+    name: s.slug === "puertas-vehiculares" ? "Puertas Automáticas Vehiculares" : "Escaleras Eléctricas",
+    short: s.slug === "puertas-vehiculares"
+      ? "Automatización, reparación y mantenimiento preventivo de accesos vehiculares de alta disponibilidad para conjuntos residenciales, viviendas, parqueaderos y empresas."
+      : "Mantenimiento preventivo, correctivo y soporte técnico especializado para escaleras mecánicas comerciales e institucionales.",
+  })),
+];
+
+export const getService = (slug: string) => MASTER_SERVICES.find((s) => s.slug === slug) ?? SERVICES.find((s) => s.slug === slug);

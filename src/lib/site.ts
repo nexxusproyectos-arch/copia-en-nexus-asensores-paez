@@ -4,6 +4,7 @@ export const SITE = {
   shortName: "Ascensores Páez",
   founded: "Diciembre de 2018",
   phoneDisplay: "+57 321 900 5713",
+  phoneLocal: "321 900 5713",
   phoneE164: "+573219005713",
   whatsappNumber: "573219005713",
   email: "ascensorespaezsas@gmail.com",

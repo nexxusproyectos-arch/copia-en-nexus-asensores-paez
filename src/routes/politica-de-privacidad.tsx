@@ -8,6 +8,8 @@ export const Route = createFileRoute("/politica-de-privacidad")({
       { name: "description", content: "Política de tratamiento de datos personales de Ascensores Páez S.A.S. conforme a la Ley 1581 de 2012 (Habeas Data)." },
       { property: "og:title", content: "Política de privacidad | Ascensores Páez" },
       { property: "og:description", content: "Cómo tratamos tus datos personales conforme a la ley colombiana." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/politica-de-privacidad" }],
   }),
