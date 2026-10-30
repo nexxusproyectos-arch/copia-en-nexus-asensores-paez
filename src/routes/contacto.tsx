@@ -6,6 +6,7 @@ import { SERVICES } from "@/lib/services";
 import { SITE, waLink } from "@/lib/site";
 import { contactSchema, submitContact } from "@/lib/contact.functions";
 import { WhatsAppButton } from "@/components/site/WhatsApp";
+import { trackEvent } from "@/lib/tracking";
 
 export const Route = createFileRoute("/contacto")({
   head: () => ({
@@ -53,6 +54,7 @@ function Contact() {
     setStatus("loading");
     try {
       await send({ data: parsed.data });
+      trackEvent("Lead");
       setStatus("ok");
       form.reset();
     } catch {
