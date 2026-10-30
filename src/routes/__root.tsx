@@ -16,6 +16,7 @@ import { WhatsAppFloating } from "@/components/site/WhatsApp";
 import { MotionConfig } from "framer-motion";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { trackEvent } from "@/lib/tracking";
 
 function NotFoundComponent() {
   return (
@@ -138,6 +139,16 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useEffect(() => {
+    const trackClick = (event: MouseEvent) => {
+      if (!(event.target instanceof Element)) return;
+      const href = event.target.closest("a")?.getAttribute("href") ?? "";
+      if (href.startsWith("https://wa.me/")) trackEvent("click_whatsapp");
+      if (href.startsWith("tel:")) trackEvent("click_llamar");
+    };
+    document.addEventListener("click", trackClick);
+    return () => document.removeEventListener("click", trackClick);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

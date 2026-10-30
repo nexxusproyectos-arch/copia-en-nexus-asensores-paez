@@ -6,6 +6,7 @@ import { SERVICES } from "@/lib/services";
 import { SITE, waLink } from "@/lib/site";
 import { contactSchema, submitContact } from "@/lib/contact.functions";
 import { WhatsAppButton } from "@/components/site/WhatsApp";
+import { trackEvent } from "@/lib/tracking";
 
 export const Route = createFileRoute("/contacto")({
   head: () => ({
@@ -14,6 +15,8 @@ export const Route = createFileRoute("/contacto")({
       { name: "description", content: "Contacta a Ascensores Páez S.A.S. por WhatsApp al +57 321 900 5713, correo o formulario. Ac. 153 #103b-76, Bogotá." },
       { property: "og:title", content: "Contacto | Ascensores Páez" },
       { property: "og:description", content: "Escríbenos por WhatsApp o déjanos tus datos y te contactamos." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/contacto" }],
   }),
@@ -51,6 +54,7 @@ function Contact() {
     setStatus("loading");
     try {
       await send({ data: parsed.data });
+      trackEvent("Lead");
       setStatus("ok");
       form.reset();
     } catch {

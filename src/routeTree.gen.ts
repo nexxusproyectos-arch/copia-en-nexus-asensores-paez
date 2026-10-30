@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as NosotrosRouteImport } from './routes/nosotros'
+import { Route as NuestraEmpresaRouteImport } from './routes/nuestra-empresa'
 import { Route as PoliticaDePrivacidadRouteImport } from './routes/politica-de-privacidad'
 import { Route as ProyectosRouteImport } from './routes/proyectos'
 import { Route as ServiciosSlugRouteImport } from './routes/servicios.$slug'
@@ -29,6 +30,11 @@ const ContactoRoute = ContactoRouteImport.update({
 const NosotrosRoute = NosotrosRouteImport.update({
   id: '/nosotros',
   path: '/nosotros',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NuestraEmpresaRoute = NuestraEmpresaRouteImport.update({
+  id: '/nuestra-empresa',
+  path: '/nuestra-empresa',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PoliticaDePrivacidadRoute = PoliticaDePrivacidadRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
+  '/nuestra-empresa': typeof NuestraEmpresaRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/proyectos': typeof ProyectosRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
+  '/nuestra-empresa': typeof NuestraEmpresaRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/proyectos': typeof ProyectosRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
+  '/nuestra-empresa': typeof NuestraEmpresaRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/proyectos': typeof ProyectosRoute
   '/servicios/$slug': typeof ServiciosSlugRoute
@@ -78,6 +87,7 @@ export interface FileRouteTypes {
     | '/'
     | '/contacto'
     | '/nosotros'
+    | '/nuestra-empresa'
     | '/politica-de-privacidad'
     | '/proyectos'
     | '/servicios/$slug'
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/contacto'
     | '/nosotros'
+    | '/nuestra-empresa'
     | '/politica-de-privacidad'
     | '/proyectos'
     | '/servicios/$slug'
@@ -94,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/contacto'
     | '/nosotros'
+    | '/nuestra-empresa'
     | '/politica-de-privacidad'
     | '/proyectos'
     | '/servicios/$slug'
@@ -103,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactoRoute: typeof ContactoRoute
   NosotrosRoute: typeof NosotrosRoute
+  NuestraEmpresaRoute: typeof NuestraEmpresaRoute
   PoliticaDePrivacidadRoute: typeof PoliticaDePrivacidadRoute
   ProyectosRoute: typeof ProyectosRoute
   ServiciosSlugRoute: typeof ServiciosSlugRoute
@@ -129,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/nosotros'
       fullPath: '/nosotros'
       preLoaderRoute: typeof NosotrosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nuestra-empresa': {
+      id: '/nuestra-empresa'
+      path: '/nuestra-empresa'
+      fullPath: '/nuestra-empresa'
+      preLoaderRoute: typeof NuestraEmpresaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/politica-de-privacidad': {
@@ -159,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactoRoute: ContactoRoute,
   NosotrosRoute: NosotrosRoute,
+  NuestraEmpresaRoute: NuestraEmpresaRoute,
   PoliticaDePrivacidadRoute: PoliticaDePrivacidadRoute,
   ProyectosRoute: ProyectosRoute,
   ServiciosSlugRoute: ServiciosSlugRoute,

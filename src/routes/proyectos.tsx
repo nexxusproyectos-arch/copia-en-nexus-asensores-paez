@@ -9,6 +9,8 @@ export const Route = createFileRoute("/proyectos")({
       { name: "description", content: "Galería de instalaciones reales: ascensores de pasajeros, montacargas, montacoches, camilleros, escaleras eléctricas y puertas vehiculares." },
       { property: "og:title", content: "Proyectos e instalaciones | Ascensores Páez" },
       { property: "og:description", content: "Conoce instalaciones reales de transporte vertical y accesos automáticos." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/proyectos" }],
   }),
