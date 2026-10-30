@@ -5,7 +5,7 @@
 - [x] Verify form, destinations, desktop/mobile layout and tests.
 
 # Company and contact updates
-- [ ] Apply exact company copy, history, mission and vision.
-- [ ] Update contact copy and reuse the real form with required service selection and WhatsApp context.
-- [ ] Verify desktop/mobile pages, submission storage and tests.
+- [x] Apply exact company copy, history, mission and vision.
+- [x] Update contact copy and reuse the real form with required service selection and WhatsApp context.
+- [x] Verify desktop/mobile pages, submission storage and tests.
 - [ ] Replace company photograph with the requested machine-room technician photo (awaiting upload).
