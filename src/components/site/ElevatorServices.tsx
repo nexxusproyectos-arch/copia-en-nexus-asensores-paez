@@ -23,7 +23,7 @@ export function ElevatorServices() {
         <div className="min-w-0"><h2 className="text-3xl font-extrabold leading-tight">{block.title}</h2><p className="mt-6 leading-relaxed text-muted-foreground">{block.text}</p>
           <div className="mt-8 flex flex-col items-start gap-3 xl:flex-row xl:flex-wrap">
             <WhatsAppButton message={block.whatsapp} label="Cotizar por WhatsApp" />
-            <Button asChild className="h-auto min-h-12 whitespace-normal px-6 py-3.5 font-bold"><Link to="/contacto" search={{ servicio: block.slug }}><ClipboardList />Prefiero Dejar Datos</Link></Button>
+            <Button asChild className="h-auto min-h-12 whitespace-normal px-6 py-3.5 font-bold"><Link to="/" search={{ servicio: block.slug }} hash="formulario"><ClipboardList />Prefiero Dejar Datos</Link></Button>
           </div>
         </div>
       </motion.div>
