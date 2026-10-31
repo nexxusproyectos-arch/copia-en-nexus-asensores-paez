@@ -8,7 +8,7 @@ export const CONTACT_SERVICES = [
   "Instalación",
   "Modernización",
   "Mantenimiento Preventivo y Correctivo",
-  "Adecuación a la Norma NTC 5926-1",
+  "Adecuación a la Norma NTC 5926",
   "Otro",
 ] as const;
 

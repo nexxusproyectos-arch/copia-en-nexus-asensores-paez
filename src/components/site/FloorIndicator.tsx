@@ -6,7 +6,7 @@ const FLOORS = [
   { id: "inicio", n: 1, label: "Inicio" },
   { id: "servicios", n: 2, label: "Servicios" },
   { id: "normativa", n: 3, label: "Norma" },
-  { id: "servicios-tecnicos", n: 4, label: "Servicios técnicos" },
+  { id: "servicios-tecnicos", n: 4, label: "Ingeniería" },
   { id: "testimonios", n: 5, label: "Testimonios" },
   { id: "formulario", n: 6, label: "Contacto" },
 ];

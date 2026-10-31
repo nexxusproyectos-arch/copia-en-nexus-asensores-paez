@@ -20,7 +20,7 @@ export const Route = createFileRoute("/contacto")({
       { title: "Contacto | Ascensores Páez S.A.S. Colombia" },
       { name: "description", content: "Contacte a Ascensores Páez S.A.S. por WhatsApp, correo o formulario. Atención de transporte vertical y accesos automáticos a nivel nacional en Colombia." },
       { property: "og:title", content: "Contacto | Ascensores Páez" },
-      { property: "og:description", content: "Escríbenos por WhatsApp o déjanos tus datos y te contactamos." },
+      { property: "og:description", content: "Escríbanos por WhatsApp o déjenos sus datos y lo contactamos." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
