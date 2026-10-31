@@ -16,3 +16,12 @@
 - [x] Update contact copy and reuse the real form with required service selection and WhatsApp context.
 - [x] Verify desktop/mobile pages, submission storage and tests.
 - [ ] Replace company photograph with the requested machine-room technician photo (awaiting upload).
+
+# Simple service pages + usted sweep
+- [x] Convert remaining "tú" forms to "usted" (services data, privacy page, home metadata).
+- [x] Rewrite adecuacion-normativa: exact hero text, legal disclaimer, remove inspection/certification claims.
+- [x] Simplify service pages to hero + single photo/text block + footer; remove FAQ JSON-LD and extra sections.
+- [x] Create /servicios/reparaciones, link it from the home card, add to sitemap and contact preselection.
+- [x] Adaptive photo containers (no hard crops on vertical photos).
+- [ ] Apply client's exact service texts (document had "[TEXTO DEL CLIENTE]" placeholders — awaiting texts).
+- [ ] Replace service photos with client-provided photos (awaiting upload).

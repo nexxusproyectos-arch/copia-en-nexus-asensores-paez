@@ -8,7 +8,7 @@ export const Route = createFileRoute("/politica-de-privacidad")({
       { title: "Política de tratamiento de datos personales | Ascensores Páez" },
       { name: "description", content: "Política de tratamiento de datos personales de Ascensores Páez S.A.S. conforme a la Ley 1581 de 2012 (Habeas Data)." },
       { property: "og:title", content: "Política de privacidad | Ascensores Páez" },
-      { property: "og:description", content: "Cómo tratamos tus datos personales conforme a la ley colombiana." },
+      { property: "og:description", content: "Cómo tratamos sus datos personales conforme a la ley colombiana." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -23,15 +23,15 @@ export const Route = createFileRoute("/politica-de-privacidad")({
         <h2>Responsable del tratamiento</h2>
         <p>{SITE.name}. Dirección: {SITE.address}. Correo: {SITE.email}. Teléfono: {SITE.phoneDisplay}.</p>
         <h2>Datos que recolectamos</h2>
-        <p>Nombre, teléfono, correo electrónico, servicio de interés y el mensaje que nos envías a través del formulario de contacto o WhatsApp.</p>
+        <p>Nombre, teléfono, correo electrónico, servicio de interés y el mensaje que nos envía a través del formulario de contacto o WhatsApp.</p>
         <h2>Finalidad</h2>
-        <p>Atender tus solicitudes de información y cotización, contactarte sobre el servicio solicitado y gestionar la relación comercial.</p>
+        <p>Atender sus solicitudes de información y cotización, contactarlo sobre el servicio solicitado y gestionar la relación comercial.</p>
         <h2>Derechos del titular</h2>
-        <p>Puedes conocer, actualizar, rectificar y solicitar la supresión de tus datos, así como revocar la autorización otorgada, en los términos de la ley.</p>
-        <h2>Cómo ejercer tus derechos</h2>
-        <p>Envía tu solicitud al correo {SITE.email} indicando tu nombre, tus datos de contacto y la petición concreta.</p>
+        <p>Puede conocer, actualizar, rectificar y solicitar la supresión de sus datos, así como revocar la autorización otorgada, en los términos de la ley.</p>
+        <h2>Cómo ejercer sus derechos</h2>
+        <p>Envíe su solicitud al correo {SITE.email} indicando su nombre, sus datos de contacto y la petición concreta.</p>
         <h2>Seguridad</h2>
-        <p>Adoptamos medidas razonables para proteger tus datos contra acceso no autorizado, pérdida o uso indebido.</p>
+        <p>Adoptamos medidas razonables para proteger sus datos contra acceso no autorizado, pérdida o uso indebido.</p>
       </div>
     </article>
   ),

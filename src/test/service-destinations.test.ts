@@ -24,8 +24,11 @@ describe("final client service destinations", () => {
   it("does not preselect a service for an unknown query", () => {
     expect(contactServiceSelection("unknown")).toBe("");
   });
-  it("retains the six requested non-elevator service pages", () => {
-    expect(CURRENT_SERVICE_SLUGS).toEqual(["ascensores", "puertas-vehiculares", "escaleras-electricas", "instalacion", "modernizacion", "mantenimiento", "adecuacion-normativa"]);
+  it("retains the requested non-elevator service pages including reparaciones", () => {
+    expect(CURRENT_SERVICE_SLUGS).toEqual(["ascensores", "puertas-vehiculares", "escaleras-electricas", "instalacion", "modernizacion", "mantenimiento", "adecuacion-normativa", "reparaciones"]);
+  });
+  it("preselects Reparaciones Técnicas Especializadas from its service page", () => {
+    expect(contactServiceSelection("reparaciones")).toBe("Reparaciones Técnicas Especializadas");
   });
   it("excludes redirect URLs from the sitemap and includes current public pages", () => {
     const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
