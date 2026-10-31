@@ -14,7 +14,7 @@ import { Testimonials } from "@/components/site/Testimonials";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
-  validateSearch: (search: Record<string, unknown>) => ({ servicio: typeof search.servicio === "string" ? search.servicio : "" }),
+  validateSearch: (search: Record<string, unknown>) => ({ servicio: typeof search["servicio"] === "string" && search["servicio"] ? (search["servicio"] as string) : undefined }),
   head: () => ({
     meta: [
       { title: "Ascensores Páez S.A.S. | Transporte vertical, mantenimiento y adecuación técnica" },
