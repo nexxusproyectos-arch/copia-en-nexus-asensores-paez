@@ -8,11 +8,13 @@ import { ContactForm } from "@/components/site/ContactForm";
 import { Button } from "@/components/ui/button";
 import { IMG, IMG_POSITION } from "@/lib/images";
 import { MASTER_SERVICES } from "@/lib/services";
+import { contactServiceSelection } from "@/lib/contact-details";
 import { WhatsAppButton, scrollToForm } from "@/components/site/WhatsApp";
 import { Testimonials } from "@/components/site/Testimonials";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
+  validateSearch: (search: Record<string, unknown>) => ({ servicio: typeof search.servicio === "string" ? search.servicio : "" }),
   head: () => ({
     meta: [
       { title: "Ascensores Páez S.A.S. | Transporte vertical, mantenimiento y adecuación técnica" },
@@ -29,12 +31,14 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 const TECHNICAL = [
-  { icon: Wrench, title: "Mantenimiento Preventivo y Correctivo", text: "Rutinas técnicas planificadas para prevenir fallas, prolongar la vida útil de sus equipos y garantizar la seguridad de los usuarios.", slug: "mantenimiento" },
-  { icon: Settings2, title: "Reparaciones Técnicas Especializadas", text: "Diagnóstico rápido y corrección inmediata de fallas mecánicas o eléctricas con repuestos de alta calidad.", slug: "reparaciones" },
-  { icon: ShieldCheck, title: "Modernización Estética y Tecnológica", text: "Actualización de sistemas de control antiguos y renovación visual de cabinas para mejorar el confort y la eficiencia energética.", slug: "modernizacion" },
+  { icon: Wrench, title: "Mantenimiento en Transporte Vertical y Accesos", text: "Rutinas técnicas planificadas para prevenir fallas, prolongar la vida útil de sus equipos y garantizar la seguridad de los usuarios en sus ascensores, escaleras electromecánicas y puertas automáticas vehiculares.", slug: "mantenimiento" },
+  { icon: Settings2, title: "Reparaciones Técnicas Especializadas", text: "Diagnóstico rápido y corrección inmediata de fallas mecánicas o eléctricas con repuestos de alta calidad. Brindamos soporte técnico prioritario para restablecer el flujo seguro en sus instalaciones.", slug: "reparaciones" },
+  { icon: ShieldCheck, title: "Modernización Estética y Tecnológica", text: "Actualización de sistemas de control antiguos, optimización de componentes y renovación visual de cabinas de ascensores para mejorar el confort, la valorización del edificio y la eficiencia energética.", slug: "modernizacion" },
   { icon: FileCheck2, title: "Adecuación a la Norma NTC 5926", text: "Corregimos de forma precisa los hallazgos eléctricos y mecánicos emitidos por los entes inspectores bajo las normas NTC 5926-1 y NTC 5926-3, dejando sus equipos listos para su certificación.", slug: "adecuacion-normativa" },
 ];
 function Home() {
+  const { servicio } = Route.useSearch();
+  const leadService = contactServiceSelection(servicio);
   return <>
     <ElevatorIntro />
     <section id="inicio" className="relative overflow-hidden bg-ink text-ink-foreground">
@@ -73,13 +77,13 @@ function Home() {
         {TECHNICAL.map((item, i) => {
           const Icon = item.icon;
           const body = <><div className="flex items-center justify-between"><Icon className="h-8 w-8 text-primary" /><span className="font-mono text-2xl text-ink-muted">0{i + 1}</span></div><h3 className="mt-6 text-2xl font-extrabold">{item.title}</h3><p className="mt-4 text-sm leading-relaxed text-ink-muted">{item.text}</p><div className="mt-5 flex justify-end text-primary"><ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" /></div></>;
-          const cls = "group block border-t border-ink-muted/30 pt-6";
+          const cls = "group block h-full border-t border-ink-muted/30 pt-6";
           return <Link key={item.title} to="/servicios/$slug" params={{ slug: item.slug }} className={cls}>{body}</Link>;
         })}
       </div></div>
     </section>
     <Testimonials />
-    <section id="formulario" className="scroll-mt-24 py-16 lg:py-20"><div className="mx-auto max-w-4xl px-5"><Reveal><h2 className="text-3xl font-extrabold md:text-4xl">¿Prefiere que lo contactemos nosotros?</h2><p className="mt-5 leading-relaxed text-muted-foreground">Déjenos sus datos y un asesor técnico se comunicará con usted en el menor tiempo posible para revisar su requerimiento o agendar una visita.</p></Reveal><div className="mt-10"><ContactForm /></div></div></section>
+    <section id="formulario" className="scroll-mt-24 py-16 lg:py-20"><div className="mx-auto max-w-4xl px-5"><Reveal><h2 className="text-3xl font-extrabold md:text-4xl">¿Prefiere que lo contactemos nosotros?</h2><p className="mt-5 leading-relaxed text-muted-foreground">Registre sus datos y un asesor técnico se comunicará con usted en el menor tiempo posible para revisar su requerimiento o agendar una visita técnica.</p></Reveal><div className="mt-10"><ContactForm key={leadService} leadService={leadService} /></div></div></section>
   </>;
 }
 function HeroMedia() {
