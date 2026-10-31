@@ -249,27 +249,44 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "adecuacion-normativa",
-    name: "Adecuación a la normativa",
-    short: "Orientación para ajustar tus equipos a la NTC 5926-1 y NTC 5926-3.",
-    seoTitle: "Adecuación de ascensores a la NTC 5926 | Ascensores Páez",
-    seoDescription: "Orientación y adecuación de ascensores a la normativa técnica NTC 5926-1 y NTC 5926-3 en Colombia.",
-    heroTitle: "Adecuación a la NTC 5926-1 y NTC 5926-3.",
-    intro: "Las normas técnicas NTC 5926-1 y NTC 5926-3 establecen requisitos para la revisión de equipos de transporte vertical. Te orientamos sobre los ajustes que tu equipo puede necesitar para cumplirlas.",
-    image: IMG.cabina,
-    imageAlt: "Ascensor con puertas abiertas en un edificio",
-    gallery: [{ src: IMG.lobby, alt: "Lobby de edificio con ascensores" }],
+    name: "Adecuación a la Norma NTC 5926",
+    short: "Corrección de los hallazgos eléctricos y mecánicos emitidos por los entes inspectores bajo las normas NTC 5926-1 y NTC 5926-3.",
+    seoTitle: "Adecuación a la Norma NTC 5926 | Ascensores Páez S.A.S.",
+    seoDescription: "Corrección de hallazgos mecánicos y eléctricos emitidos por entes inspectores bajo las normas NTC 5926-1 y NTC 5926-3 en Colombia.",
+    heroTitle: "Adecuación a la Norma NTC 5926.",
+    intro: "La revisión técnico-mecánica anual de ascensores, puertas automáticas y escaleras eléctricas la realiza una entidad inspectora, que entrega un informe con los hallazgos a corregir. Nosotros nos encargamos de corregir esos hallazgos mecánicos y eléctricos para que su equipo quede listo para la siguiente visita de inspección.",
+    image: IMG.montacoches,
+    imageAlt: "Equipo de transporte vertical en sótano de parqueadero",
+    gallery: [],
     applications: ["Administraciones de propiedad horizontal", "Edificios comerciales", "Instituciones", "Industria"],
     benefits: [
-      { title: "Orientación clara", text: "Te explicamos qué aplica a tu equipo." },
-      { title: "Ajustes técnicos", text: "Realizamos las adecuaciones que se identifiquen." },
+      { title: "Ajustes técnicos", text: "Realizamos las correcciones mecánicas y eléctricas que se identifiquen en el informe." },
       { title: "Seguridad", text: "Más tranquilidad para administración y usuarios." },
     ],
     faqs: [
       { q: "¿Qué es la NTC 5926?", a: "Es la norma técnica colombiana que define requisitos de revisión para equipos de transporte vertical. Las partes 1 y 3 aplican a ascensores y otros equipos." },
-      { q: "¿Pueden revisar qué le falta a mi equipo?", a: "Sí. Escríbenos y coordinamos una revisión." },
     ],
     related: ["mantenimiento", "modernizacion", "ascensores-pasajeros"],
-    whatsapp: "Hola, Ascensores Páez. Necesito orientación sobre la adecuación a la NTC 5926.",
+    whatsapp: "Hola, Ascensores Páez. Necesito corregir los hallazgos de la revisión técnico-mecánica (NTC 5926).",
+    disclaimer: "Ascensores Páez S.A.S. no realiza inspecciones ni expide certificados. Nuestro servicio es la corrección de los hallazgos emitidos por la entidad inspectora.",
+    group: "servicio",
+  },
+  {
+    slug: "reparaciones",
+    name: "Reparaciones Técnicas Especializadas",
+    short: "Diagnóstico rápido y corrección inmediata de fallas mecánicas o eléctricas con repuestos de alta calidad.",
+    seoTitle: "Reparaciones Técnicas Especializadas | Ascensores Páez S.A.S.",
+    seoDescription: "Reparaciones técnicas especializadas de ascensores y equipos de transporte vertical: diagnóstico y corrección de fallas mecánicas y eléctricas en Colombia.",
+    heroTitle: "Reparaciones Técnicas Especializadas.",
+    intro: "Diagnóstico rápido y corrección inmediata de fallas mecánicas o eléctricas con repuestos de alta calidad.",
+    image: IMG.camillero,
+    imageAlt: "Técnico acompañando a una persona en silla de ruedas dentro de un ascensor",
+    gallery: [],
+    applications: [],
+    benefits: [],
+    faqs: [],
+    related: ["mantenimiento", "modernizacion", "adecuacion-normativa"],
+    whatsapp: "Hola, Ascensores Páez. Necesito una reparación técnica.",
     group: "servicio",
   },
 ];
@@ -304,7 +321,7 @@ export const MASTER_SERVICES: Service[] = [
 export const getService = (slug: string) => MASTER_SERVICES.find((s) => s.slug === slug) ?? SERVICES.find((s) => s.slug === slug);
 
 export const ELEVATOR_BLOCKS = [
-  { id: "pasajeros", slug: "ascensores-pasajeros", title: "Ascensores para Pasajeros", image: IMG.lobby, imageAlt: "Lobby con ascensores para pasajeros", text: "Instalación, mantenimiento y modernización de ascensores de pasajeros. Garantizamos el confort, la seguridad y el flujo eficiente de usuarios en edificios residenciales, corporativos y comerciales, adaptando la tecnología a las necesidades de tu estructura.", whatsapp: "Hola, quiero cotizar un ascensor para pasajeros" },
+  { id: "pasajeros", slug: "ascensores-pasajeros", title: "Ascensores para Pasajeros", image: IMG.lobby, imageAlt: "Lobby con ascensores para pasajeros", text: "Instalación, mantenimiento y modernización de ascensores de pasajeros. Garantizamos el confort, la seguridad y el flujo eficiente de usuarios en edificios residenciales, corporativos y comerciales, adaptando la tecnología a las necesidades de su estructura.", whatsapp: "Hola, quiero cotizar un ascensor para pasajeros" },
   { id: "carga", slug: "ascensores-carga", title: "Ascensores de Carga (Montacargas)", image: IMG.montacargas, imageAlt: "Montacargas industrial con mercancía", text: "Sistemas robustos de transporte vertical para mercancías pesadas. Diseñados para soportar altas exigencias logísticas en industrias, bodegas y centros comerciales, asegurando un traslado rápido, seguro y con la máxima resistencia mecánica.", whatsapp: "Hola, quiero cotizar un ascensor de carga (montacargas)" },
   { id: "montacoches", slug: "montacoches", title: "Montacoches (Elevacoches)", image: IMG.montacoches, imageAlt: "Montacoches en un parqueadero subterráneo", text: "Optimización de espacio y elevación vehicular entre niveles de parqueaderos y sótanos. Ofrecemos soluciones de alta ingeniería estructural para mover vehículos de forma segura, silenciosa y eficiente en proyectos con espacio limitado.", whatsapp: "Hola, quiero cotizar un montacoches (elevacoches)" },
   { id: "movilidad-reducida", slug: "movilidad-reducida", title: "Ascensores para Movilidad Reducida y Camilleros", image: IMG.camillero, imageAlt: "Persona en silla de ruedas acompañada dentro de un ascensor", text: "Accesibilidad total y soluciones de movilidad médica. Desarrollamos e intervenimos equipos diseñados bajo estrictos parámetros de suavidad, dimensiones reglamentarias y seguridad para clínicas, hospitales, IPS y espacios públicos o residenciales.", whatsapp: "Hola, quiero cotizar un ascensor para movilidad reducida y camilleros" },
@@ -314,4 +331,4 @@ export function elevatorAnchor(slug: string): string | undefined {
   return ELEVATOR_BLOCKS.find((block) => block.slug === slug)?.id;
 }
 
-export const CURRENT_SERVICE_SLUGS = ["ascensores", "puertas-vehiculares", "escaleras-electricas", "instalacion", "modernizacion", "mantenimiento", "adecuacion-normativa"];
+export const CURRENT_SERVICE_SLUGS = ["ascensores", "puertas-vehiculares", "escaleras-electricas", "instalacion", "modernizacion", "mantenimiento", "adecuacion-normativa", "reparaciones"];
