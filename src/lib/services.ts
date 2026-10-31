@@ -8,9 +8,12 @@ export type Service = {
   seoDescription: string;
   heroTitle: string;
   intro: string;
+  intro2?: string;
   image: string;
   imageAlt: string;
   gallery: { src: string; alt: string }[];
+  galleryTitle?: string;
+  whatsappLabel?: string;
   applications: string[];
   benefits: { title: string; text: string }[];
   faqs: { q: string; a: string }[];
@@ -131,11 +134,13 @@ export const SERVICES: Service[] = [
     short: "Automatización de accesos vehiculares para conjuntos, empresas y casas.",
     seoTitle: "Puertas Automáticas Vehiculares | Ascensores Páez S.A.S.",
     seoDescription: "Automatización de puertas vehiculares corredizas y de acceso para conjuntos, empresas y viviendas. Instalación y mantenimiento a nivel nacional.",
-    heroTitle: "Accesos vehiculares automáticos, prácticos y seguros.",
-    intro: "Automatizamos puertas de acceso vehicular para que el ingreso y la salida sean más ágiles y controlados. Lo orientamos según el tipo de puerta y el uso del acceso.",
+    heroTitle: "Automatización y mantenimiento de puertas automáticas vehiculares.",
+    intro: "En Ascensores Páez desarrollamos soluciones de automatización de accesos para optimizar la seguridad y el flujo vehicular. Ofrecemos instalación de sistemas de alta velocidad, mantenimiento preventivo y reparaciones correctivas especializadas con componentes certificados, garantizando una operación continua y controlada en parqueaderos, conjuntos residenciales, viviendas y empresas.",
     image: IMG.puerta,
     imageAlt: "Puerta corrediza vehicular automática",
-    gallery: [{ src: IMG.puerta, alt: "Acceso vehicular con puerta automática" }],
+    gallery: [],
+    galleryTitle: "Proyectos y automatizaciones con el sello Ascensores Páez",
+    whatsappLabel: "Cotizar y Asesorarme por WhatsApp",
     applications: ["Conjuntos residenciales", "Empresas y bodegas", "Viviendas", "Parqueaderos"],
     benefits: [
       { title: "Comodidad", text: "Apertura sin bajarse del vehículo." },
@@ -156,11 +161,13 @@ export const SERVICES: Service[] = [
     short: "Flujo continuo de personas en espacios comerciales e institucionales.",
     seoTitle: "Escaleras Eléctricas | Ascensores Páez S.A.S.",
     seoDescription: "Escaleras eléctricas para centros comerciales, instituciones y edificios de alto tráfico. Asesoría, instalación y mantenimiento a nivel nacional.",
-    heroTitle: "Escaleras eléctricas para espacios de alto tránsito.",
-    intro: "Las escaleras eléctricas mueven un flujo continuo de personas entre niveles. Lo acompañamos en la orientación técnica, la instalación y el mantenimiento.",
+    heroTitle: "Soporte técnico y mantenimiento de escaleras eléctricas.",
+    intro: "Ofrecemos un servicio especializado de ingeniería preventiva y correctiva para sistemas de flujo peatonal continuo. Nuestro equipo operativo interviene componentes mecánicos y electrónicos bajo estrictos estándares de seguridad, reduciendo el desgaste prematuro de los equipos y asegurando la máxima disponibilidad operativa en entornos comerciales e institucionales de alto tráfico.",
     image: IMG.escalera,
     imageAlt: "Escaleras eléctricas en un edificio comercial",
-    gallery: [{ src: IMG.escalera, alt: "Escaleras eléctricas modernas" }],
+    gallery: [],
+    galleryTitle: "Especificaciones técnicas y componentes mecánicos",
+    whatsappLabel: "Cotizar y Asesorarme por WhatsApp",
     applications: ["Centros comerciales", "Estaciones y terminales", "Instituciones y universidades", "Grandes superficies"],
     benefits: [
       { title: "Flujo continuo", text: "Desplazamiento constante de personas entre niveles." },
