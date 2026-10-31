@@ -6,6 +6,7 @@ import { IMG_META, IMG_POSITION, isVerticalImage } from "@/lib/images";
 import { SITE } from "@/lib/site";
 import { WhatsAppButton } from "@/components/site/WhatsApp";
 import { ElevatorServices } from "@/components/site/ElevatorServices";
+import { ServiceGallery } from "@/components/site/ServiceGallery";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/servicios/$slug")({
@@ -83,14 +84,16 @@ function ServicePage() {
           </div>
           <div className="min-w-0">
             <p className="leading-relaxed text-muted-foreground">{s.intro}</p>
+            {s.intro2 && <p className="mt-4 leading-relaxed text-muted-foreground">{s.intro2}</p>}
             {s.disclaimer && <p className="mt-4 text-xs leading-relaxed text-muted-foreground">{s.disclaimer}</p>}
             <div className="mt-8 flex flex-col items-start gap-3 xl:flex-row xl:flex-wrap">
-              <WhatsAppButton message={s.whatsapp} label="Cotizar por WhatsApp" />
-              <Button asChild className="h-auto min-h-12 whitespace-normal px-6 py-3.5 font-bold"><Link to="/contacto" search={{ servicio: s.slug }}><ClipboardList />Prefiero Dejar Datos</Link></Button>
+              <WhatsAppButton message={s.whatsapp} label={s.whatsappLabel ?? "Cotizar por WhatsApp"} />
+              <Button asChild className="h-auto min-h-12 whitespace-normal px-6 py-3.5 font-bold"><Link to="/" search={{ servicio: s.slug }} hash="formulario"><ClipboardList />Prefiero Dejar Datos</Link></Button>
             </div>
           </div>
         </motion.div>
       </section>
+      {s.galleryTitle && <ServiceGallery title={s.galleryTitle} photos={s.gallery} />}
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { contactServiceSelection } from "@/lib/contact-details";
-import { CURRENT_SERVICE_SLUGS, elevatorAnchor } from "@/lib/services";
+import { CURRENT_SERVICE_SLUGS, elevatorAnchor, getService } from "@/lib/services";
+import { IMG } from "@/lib/images";
 import { sitemapStaticPaths, sitemapXML, sitemapPathForLocation } from "@/lib/sitemap";
 import { routeTree } from "@/routeTree.gen";
 import { createRouter } from "@tanstack/react-router";
@@ -29,6 +30,21 @@ describe("final client service destinations", () => {
   });
   it("preselects Reparaciones Técnicas Especializadas from its service page", () => {
     expect(contactServiceSelection("reparaciones")).toBe("Reparaciones Técnicas Especializadas");
+  });
+  it("uses the exact client-approved WhatsApp button labels", () => {
+    expect(getService("puertas-vehiculares")?.whatsappLabel).toBe("Cotizar y Asesorarme por WhatsApp");
+    expect(getService("escaleras-electricas")?.whatsappLabel).toBe("Cotizar y Asesorarme por WhatsApp");
+    expect(getService("mantenimiento")?.whatsappLabel).toBe("Cotizar Mantenimiento por WhatsApp");
+    expect(getService("reparaciones")?.whatsappLabel).toBe("Solicitar Reparación por WhatsApp");
+    expect(getService("modernizacion")?.whatsappLabel).toBe("Cotizar Modernización por WhatsApp");
+    expect(getService("adecuacion-normativa")?.whatsappLabel).toBe("Cotizar Adecuación de Hallazgos por WhatsApp");
+  });
+  it("does not use the camillero photo on the reparaciones page", () => {
+    expect(getService("reparaciones")?.image).not.toBe(IMG.camillero);
+  });
+  it("builds the home lead-form URL with service and anchor", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+    expect(router.buildLocation({ to: "/", search: { servicio: "mantenimiento" }, hash: "formulario" }).href).toBe("/?servicio=mantenimiento#formulario");
   });
   it("excludes redirect URLs from the sitemap and includes current public pages", () => {
     const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });

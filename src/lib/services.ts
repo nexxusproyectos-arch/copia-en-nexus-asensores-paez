@@ -8,9 +8,12 @@ export type Service = {
   seoDescription: string;
   heroTitle: string;
   intro: string;
+  intro2?: string;
   image: string;
   imageAlt: string;
   gallery: { src: string; alt: string }[];
+  galleryTitle?: string;
+  whatsappLabel?: string;
   applications: string[];
   benefits: { title: string; text: string }[];
   faqs: { q: string; a: string }[];
@@ -131,11 +134,13 @@ export const SERVICES: Service[] = [
     short: "Automatización de accesos vehiculares para conjuntos, empresas y casas.",
     seoTitle: "Puertas Automáticas Vehiculares | Ascensores Páez S.A.S.",
     seoDescription: "Automatización de puertas vehiculares corredizas y de acceso para conjuntos, empresas y viviendas. Instalación y mantenimiento a nivel nacional.",
-    heroTitle: "Accesos vehiculares automáticos, prácticos y seguros.",
-    intro: "Automatizamos puertas de acceso vehicular para que el ingreso y la salida sean más ágiles y controlados. Lo orientamos según el tipo de puerta y el uso del acceso.",
+    heroTitle: "Automatización y mantenimiento de puertas automáticas vehiculares.",
+    intro: "En Ascensores Páez desarrollamos soluciones de automatización de accesos para optimizar la seguridad y el flujo vehicular. Ofrecemos instalación de sistemas de alta velocidad, mantenimiento preventivo y reparaciones correctivas especializadas con componentes certificados, garantizando una operación continua y controlada en parqueaderos, conjuntos residenciales, viviendas y empresas.",
     image: IMG.puerta,
     imageAlt: "Puerta corrediza vehicular automática",
-    gallery: [{ src: IMG.puerta, alt: "Acceso vehicular con puerta automática" }],
+    gallery: [],
+    galleryTitle: "Proyectos y automatizaciones con el sello Ascensores Páez",
+    whatsappLabel: "Cotizar y Asesorarme por WhatsApp",
     applications: ["Conjuntos residenciales", "Empresas y bodegas", "Viviendas", "Parqueaderos"],
     benefits: [
       { title: "Comodidad", text: "Apertura sin bajarse del vehículo." },
@@ -156,11 +161,13 @@ export const SERVICES: Service[] = [
     short: "Flujo continuo de personas en espacios comerciales e institucionales.",
     seoTitle: "Escaleras Eléctricas | Ascensores Páez S.A.S.",
     seoDescription: "Escaleras eléctricas para centros comerciales, instituciones y edificios de alto tráfico. Asesoría, instalación y mantenimiento a nivel nacional.",
-    heroTitle: "Escaleras eléctricas para espacios de alto tránsito.",
-    intro: "Las escaleras eléctricas mueven un flujo continuo de personas entre niveles. Lo acompañamos en la orientación técnica, la instalación y el mantenimiento.",
+    heroTitle: "Soporte técnico y mantenimiento de escaleras eléctricas.",
+    intro: "Ofrecemos un servicio especializado de ingeniería preventiva y correctiva para sistemas de flujo peatonal continuo. Nuestro equipo operativo interviene componentes mecánicos y electrónicos bajo estrictos estándares de seguridad, reduciendo el desgaste prematuro de los equipos y asegurando la máxima disponibilidad operativa en entornos comerciales e institucionales de alto tráfico.",
     image: IMG.escalera,
     imageAlt: "Escaleras eléctricas en un edificio comercial",
-    gallery: [{ src: IMG.escalera, alt: "Escaleras eléctricas modernas" }],
+    gallery: [],
+    galleryTitle: "Especificaciones técnicas y componentes mecánicos",
+    whatsappLabel: "Cotizar y Asesorarme por WhatsApp",
     applications: ["Centros comerciales", "Estaciones y terminales", "Instituciones y universidades", "Grandes superficies"],
     benefits: [
       { title: "Flujo continuo", text: "Desplazamiento constante de personas entre niveles." },
@@ -204,11 +211,13 @@ export const SERVICES: Service[] = [
     short: "Actualización de equipos existentes para mejorar su funcionamiento.",
     seoTitle: "Modernización Estética y Tecnológica | Ascensores Páez S.A.S.",
     seoDescription: "Modernización de ascensores y equipos de transporte vertical existentes. Diagnóstico y asesoría técnica en Colombia.",
-    heroTitle: "Modernización para darle una nueva vida a su ascensor.",
-    intro: "Revisamos el estado de su equipo y lo orientamos sobre los componentes que conviene actualizar para mejorar su funcionamiento, su seguridad y su imagen.",
+    heroTitle: "Modernización, actualización y renovación tecnológica.",
+    intro: "Transformamos equipos antiguos en sistemas modernos, eficientes y confortables. Reemplazamos tableros de control obsoletos por tecnología de última generación para optimizar el consumo energético y renovamos estéticamente el interior de las cabinas con acabados en acero inoxidable, iluminación LED y botoneras digitales de alta resistencia.",
     image: IMG.pasillo,
     imageAlt: "Pasillo con ascensores modernizados",
-    gallery: [{ src: IMG.cabina, alt: "Cabina de ascensor moderna" }],
+    gallery: [],
+    galleryTitle: "Evolución tecnológica y acabados de cabina",
+    whatsappLabel: "Cotizar Modernización por WhatsApp",
     applications: ["Edificios con equipos antiguos", "Ascensores con fallas recurrentes", "Actualización estética de cabinas", "Adecuación a requisitos vigentes"],
     benefits: [
       { title: "Diagnóstico previo", text: "Revisamos el equipo antes de proponer." },
@@ -228,11 +237,13 @@ export const SERVICES: Service[] = [
     short: "Soporte técnico para que sus equipos funcionen de forma continua.",
     seoTitle: "Mantenimiento Preventivo y Correctivo | Ascensores Páez S.A.S.",
     seoDescription: "Mantenimiento preventivo y correctivo de ascensores, montacargas, montacoches, escaleras eléctricas y puertas vehiculares en Colombia.",
-    heroTitle: "Mantenimiento que mantiene su edificio en movimiento.",
-    intro: "Un mantenimiento constante ayuda a prevenir fallas y a mantener la seguridad de los usuarios. Atendemos el mantenimiento preventivo y correctivo de equipos de transporte vertical y accesos automáticos.",
+    heroTitle: "Planes de mantenimiento preventivo y correctivo.",
+    intro: "Garantizamos la máxima disponibilidad y el funcionamiento seguro de sus sistemas de transporte vertical y accesos automáticos. Ejecutamos rutinas técnicas planificadas para prevenir fallas electrónicas y mecánicas, junto con un soporte correctivo inmediato ante averías. Ofrecemos supervisión profesional idónea para prolongar la vida útil de sus componentes y asegurar la tranquilidad de sus usuarios.",
     image: IMG.montacargas,
     imageAlt: "Montacargas industrial en servicio",
     gallery: [],
+    galleryTitle: "Ingeniería de campo y rutinas de inspección",
+    whatsappLabel: "Cotizar Mantenimiento por WhatsApp",
     applications: ["Conjuntos residenciales", "Edificios de oficinas", "Clínicas e instituciones", "Comercio e industria"],
     benefits: [
       { title: "Preventivo", text: "Revisiones periódicas para anticipar fallas." },
@@ -253,11 +264,14 @@ export const SERVICES: Service[] = [
     short: "Corrección de los hallazgos eléctricos y mecánicos emitidos por los entes inspectores bajo las normas NTC 5926-1 y NTC 5926-3.",
     seoTitle: "Adecuación a la Norma NTC 5926 | Ascensores Páez S.A.S.",
     seoDescription: "Corrección de hallazgos mecánicos y eléctricos emitidos por entes inspectores bajo las normas NTC 5926-1 y NTC 5926-3 en Colombia.",
-    heroTitle: "Adecuación a la Norma NTC 5926.",
-    intro: "La revisión técnico-mecánica anual de ascensores, puertas automáticas y escaleras eléctricas la realiza una entidad inspectora, que entrega un informe con los hallazgos a corregir. Nosotros nos encargamos de corregir esos hallazgos mecánicos y eléctricos para que su equipo quede listo para la siguiente visita de inspección.",
+    heroTitle: "Adecuación a la norma NTC 5926-1, NTC 5926-2 y NTC 5926-3.",
+    intro: "En Ascensores Páez nos encargamos de corregir con precisión todos los hallazgos mecánicos y eléctricos reportados en las actas de inspección obligatoria.",
+    intro2: "Realizamos la ingeniería correctiva y adecuación técnica necesaria para que sus ascensores y puertas automáticas superen con éxito la visita del Organismo de Inspección autorizado y obtengan su certificación sin contratiempos, cumpliendo a cabalidad con las normas NTC 5926-1, NTC 5926-2 y NTC 5926-3.",
     image: IMG.montacoches,
     imageAlt: "Equipo de transporte vertical en sótano de parqueadero",
     gallery: [],
+    galleryTitle: "Cumplimiento normativo y seguridad legal",
+    whatsappLabel: "Cotizar Adecuación de Hallazgos por WhatsApp",
     applications: ["Administraciones de propiedad horizontal", "Edificios comerciales", "Instituciones", "Industria"],
     benefits: [
       { title: "Ajustes técnicos", text: "Realizamos las correcciones mecánicas y eléctricas que se identifiquen en el informe." },
@@ -277,11 +291,13 @@ export const SERVICES: Service[] = [
     short: "Diagnóstico rápido y corrección inmediata de fallas mecánicas o eléctricas con repuestos de alta calidad.",
     seoTitle: "Reparaciones Técnicas Especializadas | Ascensores Páez S.A.S.",
     seoDescription: "Reparaciones técnicas especializadas de ascensores y equipos de transporte vertical: diagnóstico y corrección de fallas mecánicas y eléctricas en Colombia.",
-    heroTitle: "Reparaciones Técnicas Especializadas.",
-    intro: "Diagnóstico rápido y corrección inmediata de fallas mecánicas o eléctricas con repuestos de alta calidad.",
-    image: IMG.camillero,
-    imageAlt: "Técnico acompañando a una persona en silla de ruedas dentro de un ascensor",
+    heroTitle: "Diagnóstico y reparaciones técnicas de alta precisión.",
+    intro: "Corregimos de forma inmediata fallas críticas en sistemas mecánicos, eléctricos y electrónicos. Nuestro equipo operativo interviene los equipos con herramientas diagnósticas avanzadas y repuestos certificados de alta calidad, devolviendo la operatividad y la seguridad a sus instalaciones en tiempo récord, minimizando los tiempos de inactividad.",
+    image: IMG.montacargas,
+    imageAlt: "Componentes mecánicos de un montacargas industrial",
     gallery: [],
+    galleryTitle: "Corrección técnica y sustitución de componentes",
+    whatsappLabel: "Solicitar Reparación por WhatsApp",
     applications: [],
     benefits: [],
     faqs: [],
