@@ -20,6 +20,31 @@ export const IMG = {
   logo: logo.url,
 };
 
+// Dimensiones reales de cada foto para adaptar contenedores sin recortes fuertes ni escalado.
+export const IMG_META: Record<string, { w: number; h: number }> = {
+  [IMG.lobby]: { w: 1600, h: 1067 },
+  [IMG.cabina]: { w: 612, h: 428 },
+  [IMG.puerta]: { w: 612, h: 408 },
+  [IMG.escalera]: { w: 600, h: 800 },
+  [IMG.pasillo]: { w: 1600, h: 896 },
+  [IMG.montacargas]: { w: 960, h: 1280 },
+  [IMG.montacoches]: { w: 739, h: 1195 },
+  [IMG.camillero]: { w: 960, h: 1280 },
+};
+
+export const isVerticalImage = (src: string) => {
+  const m = IMG_META[src];
+  return !!m && m.h > m.w;
+};
+
+// Encuadre del elemento principal cuando la foto va en una tarjeta horizontal con object-cover.
+export const IMG_POSITION: Record<string, string> = {
+  [IMG.escalera]: "center 20%",
+  [IMG.montacargas]: "center 30%",
+  [IMG.montacoches]: "center 35%",
+  [IMG.camillero]: "center 20%",
+};
+
 export type ProjectCategory =
   | "Pasajeros"
   | "Carga"

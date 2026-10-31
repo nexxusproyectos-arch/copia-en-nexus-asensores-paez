@@ -6,7 +6,7 @@ import { Reveal } from "@/components/site/motion";
 import { NormativeSection } from "@/components/site/NormativeSection";
 import { ContactForm } from "@/components/site/ContactForm";
 import { Button } from "@/components/ui/button";
-import { IMG } from "@/lib/images";
+import { IMG, IMG_POSITION } from "@/lib/images";
 import { MASTER_SERVICES } from "@/lib/services";
 import { waLink } from "@/lib/site";
 import { WhatsAppButton, scrollToForm } from "@/components/site/WhatsApp";
@@ -31,10 +31,10 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 const TECHNICAL = [
-  { icon: Wrench, title: "Mantenimiento Preventivo y Correctivo", text: "Rutinas técnicas planificadas para prevenir fallas, prolongar la vida útil de tus equipos y garantizar la seguridad de los usuarios.", slug: "mantenimiento" },
+  { icon: Wrench, title: "Mantenimiento Preventivo y Correctivo", text: "Rutinas técnicas planificadas para prevenir fallas, prolongar la vida útil de sus equipos y garantizar la seguridad de los usuarios.", slug: "mantenimiento" },
   { icon: Settings2, title: "Reparaciones Técnicas Especializadas", text: "Diagnóstico rápido y corrección inmediata de fallas mecánicas o eléctricas con repuestos de alta calidad.", message: "Hola, necesito una reparación técnica" },
   { icon: ShieldCheck, title: "Modernización Estética y Tecnológica", text: "Actualización de sistemas de control antiguos y renovación visual de cabinas para mejorar el confort y la eficiencia energética.", slug: "modernizacion" },
-  { icon: FileCheck2, title: "Adecuación a la norma NTC 5926-1-3", text: "Corregimos de forma precisa los hallazgos eléctricos y mecánicos emitidos por los entes certificadores, dejando tus equipos listos para su certificación.", slug: "adecuacion-normativa" },
+  { icon: FileCheck2, title: "Adecuación a la Norma NTC 5926", text: "Corregimos de forma precisa los hallazgos eléctricos y mecánicos emitidos por los entes inspectores bajo las normas NTC 5926-1 y NTC 5926-3, dejando sus equipos listos para su certificación.", slug: "adecuacion-normativa" },
 ];
 function Home() {
   return <>
@@ -48,7 +48,7 @@ function Home() {
             <span className="line-mask"><span style={{ animationDelay: "0.98s" }}>Seguridad, mantenimiento</span></span>{" "}
             <span className="line-mask"><span className="text-primary" style={{ animationDelay: "1.06s" }}>y adecuación técnica.</span></span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted">Garantizamos la continuidad y el funcionamiento seguro de tus equipos con respaldo técnico especializado a nivel nacional. Expertos en la adecuación de hallazgos mecánicos y eléctricos.</p>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-muted">Garantizamos la continuidad y el funcionamiento seguro de sus equipos con respaldo técnico especializado a nivel nacional. Expertos en la adecuación de hallazgos mecánicos y eléctricos.</p>
           <div className="mt-8 flex flex-col items-start gap-3">
             <WhatsAppButton message="Hola, Ascensores Páez. Quiero cotizar y recibir asesoría sobre sus servicios." label="Cotizar y Asesorarme por WhatsApp" />
             <Button className="btn-shine h-auto min-h-12 whitespace-normal px-6 py-3.5 text-center font-bold" onClick={scrollToForm}><ClipboardList />Prefiero Dejar Datos en la Web</Button>
@@ -62,7 +62,7 @@ function Home() {
         <Reveal><p className="eyebrow">Servicios</p></Reveal>
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {MASTER_SERVICES.map((s) => <Link key={s.slug} to="/servicios/$slug" params={{ slug: s.slug }} className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-background">
-            <div className="relative aspect-[4/3] overflow-hidden"><img src={s.slug === "ascensores" ? IMG.cabina : s.image} alt={s.slug === "ascensores" ? "Cabina de ascensor de pasajeros" : s.imageAlt} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.06]" /><div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" /></div>
+            <div className="relative aspect-[4/3] overflow-hidden"><img src={s.slug === "ascensores" ? IMG.cabina : s.image} alt={s.slug === "ascensores" ? "Cabina de ascensor de pasajeros" : s.imageAlt} loading="lazy" style={{ objectPosition: IMG_POSITION[s.slug === "ascensores" ? IMG.cabina : s.image] ?? "center" }} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.06]" /><div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" /></div>
             <div className="flex flex-1 flex-col p-6"><h2 className="text-2xl font-extrabold">{s.name}</h2><p className="mt-4 text-sm leading-relaxed text-muted-foreground">{s.short}</p><span className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-primary">Ver servicio <ArrowRight className="h-4 w-4 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" /></span></div>
             <span className="absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 bg-primary transition-transform duration-500 group-hover:scale-x-100" />
           </Link>)}
@@ -71,7 +71,7 @@ function Home() {
     </section>
     <NormativeSection />
     <section id="servicios-tecnicos" className="scroll-mt-20 bg-ink py-16 text-ink-foreground lg:py-20">
-      <div className="mx-auto max-w-7xl px-5"><Reveal><p className="eyebrow">Servicios técnicos</p></Reveal><div className="mt-8 grid gap-x-12 gap-y-10 md:grid-cols-2">
+      <div className="mx-auto max-w-7xl px-5"><Reveal><p className="eyebrow">Soluciones de Ingeniería</p><h2 className="mt-3 text-3xl font-extrabold md:text-4xl">Soluciones de Ingeniería.</h2></Reveal><div className="mt-8 grid gap-x-12 gap-y-10 md:grid-cols-2">
         {TECHNICAL.map((item, i) => {
           const Icon = item.icon;
           const body = <><div className="flex items-center justify-between"><Icon className="h-8 w-8 text-primary" /><span className="font-mono text-2xl text-ink-muted">0{i + 1}</span></div><h3 className="mt-6 text-2xl font-extrabold">{item.title}</h3><p className="mt-4 text-sm leading-relaxed text-ink-muted">{item.text}</p><div className="mt-5 flex justify-end text-primary">{item.message ? <WhatsAppIcon className="h-5 w-5" /> : <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />}</div></>;
@@ -81,7 +81,7 @@ function Home() {
       </div></div>
     </section>
     <Testimonials />
-    <section id="formulario" className="scroll-mt-24 py-16 lg:py-20"><div className="mx-auto max-w-4xl px-5"><Reveal><h2 className="text-3xl font-extrabold md:text-4xl">¿Prefieres que te contactemos nosotros?</h2><p className="mt-5 leading-relaxed text-muted-foreground">Déjanos tus datos y un asesor técnico se comunicará contigo en el menor tiempo posible para revisar tu requerimiento o agendar una visita.</p></Reveal><div className="mt-10"><ContactForm /></div></div></section>
+    <section id="formulario" className="scroll-mt-24 py-16 lg:py-20"><div className="mx-auto max-w-4xl px-5"><Reveal><h2 className="text-3xl font-extrabold md:text-4xl">¿Prefiere que lo contactemos nosotros?</h2><p className="mt-5 leading-relaxed text-muted-foreground">Déjenos sus datos y un asesor técnico se comunicará con usted en el menor tiempo posible para revisar su requerimiento o agendar una visita.</p></Reveal><div className="mt-10"><ContactForm /></div></div></section>
   </>;
 }
 function HeroMedia() {

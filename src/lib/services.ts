@@ -16,6 +16,7 @@ export type Service = {
   faqs: { q: string; a: string }[];
   related: string[];
   whatsapp: string;
+  disclaimer?: string;
   group: "producto" | "servicio";
 };
 
@@ -37,13 +38,13 @@ export const SERVICES: Service[] = [
     applications: ["Edificios residenciales y conjuntos", "Edificios de oficinas", "Centros comerciales y locales", "Hoteles e instituciones"],
     benefits: [
       { title: "Solución según el proyecto", text: "Evaluamos el uso del edificio y el espacio disponible antes de recomendar." },
-      { title: "Acompañamiento técnico", text: "Te orientamos desde la etapa de proyecto hasta la puesta en marcha." },
+      { title: "Acompañamiento técnico", text: "Lo orientamos desde la etapa de proyecto hasta la puesta en marcha." },
       { title: "Seguridad como prioridad", text: "Trabajamos con atención a la normativa técnica aplicable." },
     ],
     faqs: [
       { q: "¿Pueden asesorarnos en un edificio que aún está en construcción?", a: "Sí. Podemos revisar el proyecto con el equipo de obra para orientar la solución más adecuada." },
-      { q: "¿También hacen mantenimiento a ascensores existentes?", a: "Sí, ofrecemos mantenimiento preventivo y correctivo. Escríbenos con los datos de tu equipo." },
-      { q: "¿Cómo solicito una cotización?", a: "Escríbenos por WhatsApp con la ubicación y el tipo de edificio, y te contactamos para revisar el proyecto." },
+      { q: "¿También hacen mantenimiento a ascensores existentes?", a: "Sí, ofrecemos mantenimiento preventivo y correctivo. Escríbanos con los datos de su equipo." },
+      { q: "¿Cómo solicito una cotización?", a: "Escríbanos por WhatsApp con la ubicación y el tipo de edificio, y lo contactamos para revisar el proyecto." },
     ],
     related: ["modernizacion", "mantenimiento", "adecuacion-normativa"],
     whatsapp: "Hola, Ascensores Páez. Quiero información sobre ascensores para pasajeros.",
@@ -56,18 +57,18 @@ export const SERVICES: Service[] = [
     seoTitle: "Montacargas y ascensores de carga en Colombia | Ascensores Páez",
     seoDescription: "Montacargas para bodegas, industria y comercio. Asesoría, instalación y mantenimiento de ascensores de carga en Colombia.",
     heroTitle: "Montacargas para mover mercancía con orden y seguridad.",
-    intro: "Los montacargas facilitan el traslado de mercancía entre niveles en bodegas, plantas, locales y edificios comerciales. Te ayudamos a definir la solución según el tipo de carga y la operación de tu negocio.",
+    intro: "Los montacargas facilitan el traslado de mercancía entre niveles en bodegas, plantas, locales y edificios comerciales. Lo ayudamos a definir la solución según el tipo de carga y la operación de su negocio.",
     image: IMG.montacargas,
     imageAlt: "Montacargas con puertas naranjas cargado con mercancía",
     gallery: [{ src: IMG.montacargas, alt: "Montacargas industrial en operación" }],
     applications: ["Bodegas y centros de distribución", "Plantas industriales", "Restaurantes y cocinas", "Locales comerciales de varios niveles"],
     benefits: [
-      { title: "Según tu operación", text: "Revisamos el tipo de carga y la frecuencia de uso para orientar la solución." },
+      { title: "Según su operación", text: "Revisamos el tipo de carga y la frecuencia de uso para orientar la solución." },
       { title: "Menos esfuerzo manual", text: "Traslado vertical de mercancía sin depender de escaleras." },
       { title: "Soporte técnico", text: "Instalación y mantenimiento por el mismo equipo." },
     ],
     faqs: [
-      { q: "¿Qué información necesitan para orientar un montacargas?", a: "El tipo de carga, los niveles a comunicar y el espacio disponible. Con eso podemos revisar el proyecto contigo." },
+      { q: "¿Qué información necesitan para orientar un montacargas?", a: "El tipo de carga, los niveles a comunicar y el espacio disponible. Con eso podemos revisar el proyecto con usted." },
       { q: "¿Hacen mantenimiento a montacargas existentes?", a: "Sí, ofrecemos mantenimiento preventivo y correctivo." },
     ],
     related: ["montacoches", "mantenimiento", "instalacion"],
@@ -81,7 +82,7 @@ export const SERVICES: Service[] = [
     seoTitle: "Montacoches y elevacoches en Colombia | Ascensores Páez",
     seoDescription: "Montacoches para edificios y parqueaderos con sótanos. Asesoría técnica, instalación y mantenimiento de elevacoches en Colombia.",
     heroTitle: "Montacoches para aprovechar cada nivel de parqueadero.",
-    intro: "Cuando el espacio no permite rampas, un montacoches comunica los niveles de parqueadero. Te orientamos sobre la solución adecuada para tu edificio o proyecto.",
+    intro: "Cuando el espacio no permite rampas, un montacoches comunica los niveles de parqueadero. Lo orientamos sobre la solución adecuada para su edificio o proyecto.",
     image: IMG.montacoches,
     imageAlt: "Montacoches en sótano con vehículo ingresando",
     gallery: [{ src: IMG.montacoches, alt: "Plataforma de montacoches en parqueadero subterráneo" }],
@@ -92,7 +93,7 @@ export const SERVICES: Service[] = [
       { title: "Mantenimiento disponible", text: "Soporte técnico preventivo y correctivo." },
     ],
     faqs: [
-      { q: "¿Un montacoches reemplaza la rampa?", a: "En muchos proyectos con espacio limitado es una alternativa. La viabilidad depende del diseño del edificio, que revisamos contigo." },
+      { q: "¿Un montacoches reemplaza la rampa?", a: "En muchos proyectos con espacio limitado es una alternativa. La viabilidad depende del diseño del edificio, que revisamos con usted." },
       { q: "¿Atienden montacoches ya instalados?", a: "Sí, ofrecemos mantenimiento preventivo y correctivo." },
     ],
     related: ["ascensores-carga", "puertas-vehiculares", "mantenimiento"],
@@ -106,7 +107,7 @@ export const SERVICES: Service[] = [
     seoTitle: "Ascensores para movilidad reducida y camilleros | Ascensores Páez",
     seoDescription: "Ascensores para personas con movilidad reducida y camilleros en clínicas, viviendas y edificios. Asesoría e instalación en Colombia.",
     heroTitle: "Accesibilidad vertical para que nadie se quede abajo.",
-    intro: "Servicios para personas con movilidad reducida, sillas de ruedas y traslado de pacientes en camilla. Te ayudamos a elegir según el espacio y el tipo de usuario.",
+    intro: "Servicios para personas con movilidad reducida, sillas de ruedas y traslado de pacientes en camilla. Lo ayudamos a elegir según el espacio y el tipo de usuario.",
     image: IMG.camillero,
     imageAlt: "Ascensor camillero con paciente en silla de ruedas",
     gallery: [{ src: IMG.camillero, alt: "Paciente en silla de ruedas dentro de un ascensor" }],
@@ -117,7 +118,7 @@ export const SERVICES: Service[] = [
       { title: "Asesoría cercana", text: "Escuchamos las necesidades de los usuarios antes de recomendar." },
     ],
     faqs: [
-      { q: "¿Tienen soluciones para casas?", a: "Sí. Revisamos el espacio disponible para orientarte sobre la opción adecuada." },
+      { q: "¿Tienen soluciones para casas?", a: "Sí. Revisamos el espacio disponible para orientarlo sobre la opción adecuada." },
       { q: "¿Qué es un ascensor camillero?", a: "Es un ascensor con dimensiones que permiten trasladar a un paciente en camilla con su acompañante." },
     ],
     related: ["ascensores-pasajeros", "adecuacion-normativa", "mantenimiento"],
@@ -131,7 +132,7 @@ export const SERVICES: Service[] = [
     seoTitle: "Puertas automáticas vehiculares en Colombia | Ascensores Páez",
     seoDescription: "Automatización de puertas vehiculares corredizas y de acceso para conjuntos, empresas y viviendas. Instalación y mantenimiento a nivel nacional.",
     heroTitle: "Accesos vehiculares automáticos, prácticos y seguros.",
-    intro: "Automatizamos puertas de acceso vehicular para que el ingreso y la salida sean más ágiles y controlados. Te orientamos según el tipo de puerta y el uso del acceso.",
+    intro: "Automatizamos puertas de acceso vehicular para que el ingreso y la salida sean más ágiles y controlados. Lo orientamos según el tipo de puerta y el uso del acceso.",
     image: IMG.puerta,
     imageAlt: "Puerta corrediza vehicular automática",
     gallery: [{ src: IMG.puerta, alt: "Acceso vehicular con puerta automática" }],
@@ -142,7 +143,7 @@ export const SERVICES: Service[] = [
       { title: "Mantenimiento", text: "Soporte técnico para que el acceso siga funcionando." },
     ],
     faqs: [
-      { q: "¿Pueden automatizar una puerta que ya tengo?", a: "Es posible en muchos casos. Envíanos fotos por WhatsApp para revisarla." },
+      { q: "¿Pueden automatizar una puerta que ya tengo?", a: "Es posible en muchos casos. Envíenos fotos por WhatsApp para revisarla." },
       { q: "¿Hacen mantenimiento a puertas automáticas?", a: "Sí, ofrecemos mantenimiento preventivo y correctivo." },
     ],
     related: ["montacoches", "mantenimiento", "instalacion"],
@@ -156,7 +157,7 @@ export const SERVICES: Service[] = [
     seoTitle: "Escaleras eléctricas en Colombia | Ascensores Páez",
     seoDescription: "Escaleras eléctricas para centros comerciales, instituciones y edificios de alto tráfico. Asesoría, instalación y mantenimiento a nivel nacional.",
     heroTitle: "Escaleras eléctricas para espacios de alto tránsito.",
-    intro: "Las escaleras eléctricas mueven un flujo continuo de personas entre niveles. Te acompañamos en la orientación técnica, la instalación y el mantenimiento.",
+    intro: "Las escaleras eléctricas mueven un flujo continuo de personas entre niveles. Lo acompañamos en la orientación técnica, la instalación y el mantenimiento.",
     image: IMG.escalera,
     imageAlt: "Escaleras eléctricas en un edificio comercial",
     gallery: [{ src: IMG.escalera, alt: "Escaleras eléctricas modernas" }],
@@ -167,7 +168,7 @@ export const SERVICES: Service[] = [
       { title: "Soporte técnico", text: "Mantenimiento preventivo y correctivo." },
     ],
     faqs: [
-      { q: "¿Atienden escaleras eléctricas ya instaladas?", a: "Sí, escríbenos con la información del equipo para revisar el mantenimiento." },
+      { q: "¿Atienden escaleras eléctricas ya instaladas?", a: "Sí, escríbanos con la información del equipo para revisar el mantenimiento." },
     ],
     related: ["ascensores-pasajeros", "mantenimiento", "modernizacion"],
     whatsapp: "Hola, Ascensores Páez. Quiero información sobre escaleras eléctricas.",
@@ -188,7 +189,7 @@ export const SERVICES: Service[] = [
     benefits: [
       { title: "Coordinación con obra", text: "Trabajamos de la mano con constructores e interventores." },
       { title: "Un solo responsable", text: "El mismo equipo puede continuar con el mantenimiento." },
-      { title: "Orientación normativa", text: "Te guiamos sobre la normativa aplicable." },
+      { title: "Cumplimiento normativo", text: "Instalamos conforme a la normativa técnica vigente." },
     ],
     faqs: [
       { q: "¿En qué momento de la obra debo contactarlos?", a: "Lo ideal es desde la etapa de diseño, para orientar los espacios necesarios." },
@@ -203,8 +204,8 @@ export const SERVICES: Service[] = [
     short: "Actualización de equipos existentes para mejorar su funcionamiento.",
     seoTitle: "Modernización de ascensores en Colombia | Ascensores Páez",
     seoDescription: "Modernización de ascensores y equipos de transporte vertical existentes. Diagnóstico y asesoría técnica en Colombia.",
-    heroTitle: "Modernización para darle una nueva vida a tu ascensor.",
-    intro: "Revisamos el estado de tu equipo y te orientamos sobre los componentes que conviene actualizar para mejorar su funcionamiento, su seguridad y su imagen.",
+    heroTitle: "Modernización para darle una nueva vida a su ascensor.",
+    intro: "Revisamos el estado de su equipo y lo orientamos sobre los componentes que conviene actualizar para mejorar su funcionamiento, su seguridad y su imagen.",
     image: IMG.pasillo,
     imageAlt: "Pasillo con ascensores modernizados",
     gallery: [{ src: IMG.cabina, alt: "Cabina de ascensor moderna" }],
@@ -224,10 +225,10 @@ export const SERVICES: Service[] = [
   {
     slug: "mantenimiento",
     name: "Mantenimiento preventivo y correctivo",
-    short: "Soporte técnico para que tus equipos funcionen de forma continua.",
+    short: "Soporte técnico para que sus equipos funcionen de forma continua.",
     seoTitle: "Mantenimiento de ascensores en Colombia | Ascensores Páez",
     seoDescription: "Mantenimiento preventivo y correctivo de ascensores, montacargas, montacoches, escaleras eléctricas y puertas vehiculares en Colombia.",
-    heroTitle: "Mantenimiento que mantiene tu edificio en movimiento.",
+    heroTitle: "Mantenimiento que mantiene su edificio en movimiento.",
     intro: "Un mantenimiento constante ayuda a prevenir fallas y a mantener la seguridad de los usuarios. Atendemos el mantenimiento preventivo y correctivo de equipos de transporte vertical y accesos automáticos.",
     image: IMG.pasillo,
     imageAlt: "Ascensores en servicio en un pasillo",
@@ -239,7 +240,7 @@ export const SERVICES: Service[] = [
       { title: "Atención personalizada", text: "Un contacto directo con nuestro equipo técnico." },
     ],
     faqs: [
-      { q: "¿Atienden equipos instalados por otras empresas?", a: "Escríbenos con la marca y el tipo de equipo para revisar el caso." },
+      { q: "¿Atienden equipos instalados por otras empresas?", a: "Escríbanos con la marca y el tipo de equipo para revisar el caso." },
       { q: "¿Qué incluye el mantenimiento preventivo?", a: "Revisiones periódicas del equipo. El alcance se define según el equipo y su uso." },
     ],
     related: ["modernizacion", "adecuacion-normativa", "ascensores-pasajeros"],

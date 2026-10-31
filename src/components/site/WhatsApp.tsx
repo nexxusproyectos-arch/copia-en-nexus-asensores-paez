@@ -35,6 +35,6 @@ export function WhatsAppFloating() {
     </div>
   </>;
 }
-export function CtaBand({ message = WA_GENERAL, title = "¿Tienes un proyecto en mente? Hablemos hoy." }: { message?: string; title?: string }) {
+export function CtaBand({ message = WA_GENERAL, title = "¿Tiene un proyecto en mente? Hablemos hoy." }: { message?: string; title?: string }) {
   return <section className="bg-primary text-primary-foreground"><div className="mx-auto flex max-w-7xl flex-col items-start gap-6 px-5 py-16 md:flex-row md:items-center md:justify-between"><h2 className="max-w-2xl text-3xl font-extrabold md:text-4xl">{title}</h2><WhatsAppButton message={message} variant="light" label="Hablar con un asesor" /></div></section>;
 }
