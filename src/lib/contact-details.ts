@@ -9,6 +9,7 @@ export const CONTACT_SERVICES = [
   "Modernización",
   "Mantenimiento Preventivo y Correctivo",
   "Adecuación a la Norma NTC 5926",
+  "Reparaciones Técnicas Especializadas",
   "Otro",
 ] as const;
 
@@ -23,6 +24,7 @@ const SERVICE_SELECTIONS: Record<string, (typeof CONTACT_SERVICES)[number]> = {
   modernizacion: CONTACT_SERVICES[7],
   mantenimiento: CONTACT_SERVICES[8],
   "adecuacion-normativa": CONTACT_SERVICES[9],
+  reparaciones: CONTACT_SERVICES[10],
 };
 
 export function contactServiceSelection(slug: string): string {

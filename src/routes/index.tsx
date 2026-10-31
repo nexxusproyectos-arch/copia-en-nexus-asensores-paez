@@ -8,9 +8,7 @@ import { ContactForm } from "@/components/site/ContactForm";
 import { Button } from "@/components/ui/button";
 import { IMG, IMG_POSITION } from "@/lib/images";
 import { MASTER_SERVICES } from "@/lib/services";
-import { waLink } from "@/lib/site";
 import { WhatsAppButton, scrollToForm } from "@/components/site/WhatsApp";
-import { WhatsAppIcon } from "@/components/site/WhatsAppIcon";
 import { Testimonials } from "@/components/site/Testimonials";
 
 export const Route = createFileRoute("/")({
@@ -20,7 +18,7 @@ export const Route = createFileRoute("/")({
       { title: "Ascensores Páez S.A.S. | Transporte vertical, mantenimiento y adecuación técnica" },
       { name: "description", content: "Especialistas en transporte vertical: Seguridad, mantenimiento y adecuación técnica. Respaldo técnico especializado a nivel nacional." },
       { property: "og:title", content: "Ascensores Páez S.A.S. | Transporte vertical" },
-      { property: "og:description", content: "Garantizamos la continuidad y el funcionamiento seguro de tus equipos con respaldo técnico especializado a nivel nacional." },
+      { property: "og:description", content: "Garantizamos la continuidad y el funcionamiento seguro de sus equipos con respaldo técnico especializado a nivel nacional." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:image", content: IMG.lobby },
@@ -32,7 +30,7 @@ export const Route = createFileRoute("/")({
 });
 const TECHNICAL = [
   { icon: Wrench, title: "Mantenimiento Preventivo y Correctivo", text: "Rutinas técnicas planificadas para prevenir fallas, prolongar la vida útil de sus equipos y garantizar la seguridad de los usuarios.", slug: "mantenimiento" },
-  { icon: Settings2, title: "Reparaciones Técnicas Especializadas", text: "Diagnóstico rápido y corrección inmediata de fallas mecánicas o eléctricas con repuestos de alta calidad.", message: "Hola, necesito una reparación técnica" },
+  { icon: Settings2, title: "Reparaciones Técnicas Especializadas", text: "Diagnóstico rápido y corrección inmediata de fallas mecánicas o eléctricas con repuestos de alta calidad.", slug: "reparaciones" },
   { icon: ShieldCheck, title: "Modernización Estética y Tecnológica", text: "Actualización de sistemas de control antiguos y renovación visual de cabinas para mejorar el confort y la eficiencia energética.", slug: "modernizacion" },
   { icon: FileCheck2, title: "Adecuación a la Norma NTC 5926", text: "Corregimos de forma precisa los hallazgos eléctricos y mecánicos emitidos por los entes inspectores bajo las normas NTC 5926-1 y NTC 5926-3, dejando sus equipos listos para su certificación.", slug: "adecuacion-normativa" },
 ];
@@ -74,9 +72,9 @@ function Home() {
       <div className="mx-auto max-w-7xl px-5"><Reveal><p className="eyebrow">Soluciones de Ingeniería</p><h2 className="mt-3 text-3xl font-extrabold md:text-4xl">Soluciones de Ingeniería.</h2></Reveal><div className="mt-8 grid gap-x-12 gap-y-10 md:grid-cols-2">
         {TECHNICAL.map((item, i) => {
           const Icon = item.icon;
-          const body = <><div className="flex items-center justify-between"><Icon className="h-8 w-8 text-primary" /><span className="font-mono text-2xl text-ink-muted">0{i + 1}</span></div><h3 className="mt-6 text-2xl font-extrabold">{item.title}</h3><p className="mt-4 text-sm leading-relaxed text-ink-muted">{item.text}</p><div className="mt-5 flex justify-end text-primary">{item.message ? <WhatsAppIcon className="h-5 w-5" /> : <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />}</div></>;
+          const body = <><div className="flex items-center justify-between"><Icon className="h-8 w-8 text-primary" /><span className="font-mono text-2xl text-ink-muted">0{i + 1}</span></div><h3 className="mt-6 text-2xl font-extrabold">{item.title}</h3><p className="mt-4 text-sm leading-relaxed text-ink-muted">{item.text}</p><div className="mt-5 flex justify-end text-primary"><ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" /></div></>;
           const cls = "group block border-t border-ink-muted/30 pt-6";
-          return item.message ? <a key={item.title} href={waLink(item.message)} target="_blank" rel="noopener noreferrer" className={cls}>{body}</a> : <Link key={item.title} to="/servicios/$slug" params={{ slug: item.slug ?? "mantenimiento" }} className={cls}>{body}</Link>;
+          return <Link key={item.title} to="/servicios/$slug" params={{ slug: item.slug }} className={cls}>{body}</Link>;
         })}
       </div></div>
     </section>
