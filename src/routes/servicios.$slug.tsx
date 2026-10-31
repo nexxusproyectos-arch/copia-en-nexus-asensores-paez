@@ -6,6 +6,7 @@ import { IMG_META, IMG_POSITION, isVerticalImage } from "@/lib/images";
 import { SITE } from "@/lib/site";
 import { WhatsAppButton } from "@/components/site/WhatsApp";
 import { ElevatorServices } from "@/components/site/ElevatorServices";
+import { ServiceGallery } from "@/components/site/ServiceGallery";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/servicios/$slug")({
