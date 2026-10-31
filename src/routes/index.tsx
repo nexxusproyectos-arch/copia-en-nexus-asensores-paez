@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { fallback, zodValidator } from "@tanstack/zod-adapter";
+import { z } from "zod";
 import { ArrowRight, ArrowUpRight, ClipboardList, FileCheck2, Settings2, ShieldCheck, Wrench } from "lucide-react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ElevatorIntro } from "@/components/site/ElevatorIntro";
@@ -14,7 +16,12 @@ import { Testimonials } from "@/components/site/Testimonials";
 
 export const Route = createFileRoute("/")({
   staticData: { sitemap: true },
-  validateSearch: (search: Record<string, unknown>) => ({ servicio: typeof search["servicio"] === "string" && search["servicio"] ? (search["servicio"] as string) : undefined }),
+  validateSearch: zodValidator(z.object({ servicio: fallback(z.string(), "").default("") })),
+  search: { middlewares: [({ search, next }) => {
+    const result = next(search);
+    if (result["servicio"] === "") Reflect.deleteProperty(result, "servicio");
+    return result;
+  }] },
   head: () => ({
     meta: [
       { title: "Ascensores Páez S.A.S. | Transporte vertical, mantenimiento y adecuación técnica" },
