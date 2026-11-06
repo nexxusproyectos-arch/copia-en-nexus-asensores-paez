@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { contactServiceSelection } from "@/lib/contact-details";
-import { CURRENT_SERVICE_SLUGS, elevatorAnchor, getService } from "@/lib/services";
+import { CURRENT_SERVICE_SLUGS, ELEVATOR_BLOCKS, elevatorAnchor, getService } from "@/lib/services";
 import { IMG } from "@/lib/images";
 import { sitemapStaticPaths, sitemapXML, sitemapPathForLocation } from "@/lib/sitemap";
 import { routeTree } from "@/routeTree.gen";
@@ -41,6 +41,30 @@ describe("final client service destinations", () => {
   });
   it("does not use the camillero photo on the reparaciones page", () => {
     expect(getService("reparaciones")?.image).not.toBe(IMG.camillero);
+  });
+  it("assigns document photos to the specified service pages", () => {
+    expect(getService("mantenimiento")?.image).toBe(IMG.mantenimientoMaquinas);
+    expect(getService("modernizacion")?.image).toBe(IMG.modernizacionCabina);
+    expect(getService("reparaciones")?.image).toBe(IMG.reparacionesMaquinas);
+    expect(getService("adecuacion-normativa")?.image).toBe(IMG.adecuacionSeguridad);
+    expect(getService("instalacion")?.image).toBe(IMG.pasillo);
+  });
+  it("never repeats a rendered photo between service pages", () => {
+    const owners = new Map<string, string>();
+    for (const slug of CURRENT_SERVICE_SLUGS) {
+      const service = getService(slug);
+      expect(service).toBeDefined();
+      if (!service) continue;
+      const photos = slug === "ascensores"
+        ? ELEVATOR_BLOCKS.map((block) => block.image)
+        : [service.image, ...service.gallery.map((photo) => photo.src)];
+      for (const src of new Set(photos)) {
+        expect(owners.get(src), `${src} used by ${slug}`).toBeUndefined();
+        owners.set(src, slug);
+      }
+    }
+    expect(owners.get(IMG.montacargas)).toBe("ascensores");
+    expect(owners.get(IMG.montacoches)).toBe("ascensores");
   });
   it("builds the home lead-form URL with service and anchor", () => {
     const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });

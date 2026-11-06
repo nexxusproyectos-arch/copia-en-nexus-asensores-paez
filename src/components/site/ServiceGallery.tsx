@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { X } from "lucide-react";
-import { IMG_META, IMG_POSITION, isVerticalImage } from "@/lib/images";
+import { IMG_META } from "@/lib/images";
+import { Button } from "@/components/ui/button";
 import { Reveal } from "./motion";
 
 type Photo = { src: string; alt: string };
@@ -26,11 +27,12 @@ export function ServiceGallery({ title, photos }: { title: string; photos: Photo
           {photos.map((photo, i) => {
             const meta = IMG_META[photo.src];
             return (
-              <button
+              <Button
+                variant="ghost"
                 key={photo.src + i}
                 type="button"
                 onClick={() => setOpen(i)}
-                className="group w-4/5 shrink-0 snap-center overflow-hidden rounded-lg border border-border sm:w-2/3 lg:w-auto"
+                className="h-auto w-4/5 shrink-0 snap-center overflow-hidden rounded-lg border border-border p-0 sm:w-2/3 lg:w-auto"
                 aria-label={`Ampliar foto: ${photo.alt}`}
               >
                 <img
@@ -39,17 +41,16 @@ export function ServiceGallery({ title, photos }: { title: string; photos: Photo
                   loading="lazy"
                   width={meta?.w ?? 720}
                   height={meta?.h ?? 540}
-                  style={{ objectPosition: IMG_POSITION[photo.src] ?? "center" }}
-                  className={`w-full object-cover transition-transform duration-700 motion-safe:group-hover:scale-[1.04] ${isVerticalImage(photo.src) ? "aspect-[4/5]" : "aspect-[4/3]"}`}
+                   className="aspect-[4/3] w-full object-contain"
                 />
-              </button>
+              </Button>
             );
           })}
         </div>
       </div>
       {current && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/90 p-5" role="dialog" aria-modal="true" aria-label={current.alt} onClick={close}>
-          <button type="button" onClick={close} aria-label="Cerrar" className="absolute right-5 top-5 rounded-full bg-background/10 p-2 text-ink-foreground hover:bg-background/20"><X className="h-6 w-6" /></button>
+          <Button type="button" variant="ghost" size="icon" onClick={close} aria-label="Cerrar" className="absolute right-5 top-5 rounded-full bg-background/10 text-ink-foreground hover:bg-background/20"><X className="h-6 w-6" /></Button>
           <img src={current.src} alt={current.alt} className="max-h-[85vh] max-w-full rounded-lg object-contain" onClick={(e) => e.stopPropagation()} />
         </div>
       )}
