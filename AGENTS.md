@@ -20,3 +20,4 @@
 - The consolidated elevator view uses data-backed alternating blocks and the shared NormativeSection also used by Home, avoiding duplicate approved copy.
 - Contact service preselection is validated browser-safe query state mapped to existing dropdown labels; stored submissions keep the shared validated flow.
 - Sitemap URLs derive from explicit route inclusion decisions and the current service inventory, excluding redirects and avoiding invented last-modified timestamps.
+- Document-supplied service photos use CDN pointers registered in the central image catalog with original dimensions; service data owns their assignments and galleries so distribution stays auditable.

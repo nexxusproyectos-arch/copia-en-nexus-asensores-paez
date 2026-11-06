@@ -30,8 +30,10 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "Garantizamos la continuidad y el funcionamiento seguro de sus equipos con respaldo técnico especializado a nivel nacional." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:image", content: IMG.lobby },
-      { name: "twitter:image", content: IMG.lobby },
+      ...(IMG.lobby.startsWith("https://") ? [
+        { property: "og:image", content: IMG.lobby },
+        { name: "twitter:image", content: IMG.lobby },
+      ] : []),
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),

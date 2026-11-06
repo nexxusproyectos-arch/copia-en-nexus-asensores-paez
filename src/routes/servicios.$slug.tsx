@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-route
 import { motion, useReducedMotion } from "framer-motion";
 import { ClipboardList } from "lucide-react";
 import { elevatorAnchor, getService } from "@/lib/services";
-import { IMG_META, IMG_POSITION, isVerticalImage } from "@/lib/images";
+import { IMG_META } from "@/lib/images";
 import { SITE } from "@/lib/site";
 import { WhatsAppButton } from "@/components/site/WhatsApp";
 import { ElevatorServices } from "@/components/site/ElevatorServices";
@@ -31,8 +31,10 @@ export const Route = createFileRoute("/servicios/$slug")({
         { property: "og:description", content: s.seoDescription },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
-        { property: "og:image", content: s.image },
-        { name: "twitter:image", content: s.image },
+        ...(s.image.startsWith("https://") ? [
+          { property: "og:image", content: s.image },
+          { name: "twitter:image", content: s.image },
+        ] : []),
       ],
       links: [{ rel: "canonical", href: `/servicios/${params.slug}` }],
       scripts: [
@@ -57,7 +59,6 @@ function ServicePage() {
   const { service: s } = Route.useLoaderData();
   const reduce = useReducedMotion();
   if (s.slug === "ascensores") return <ElevatorServices />;
-  const vertical = isVerticalImage(s.image);
   const meta = IMG_META[s.image];
   return (
     <>
@@ -71,15 +72,14 @@ function ServicePage() {
       </section>
       <section className="overflow-hidden py-14 lg:py-20">
         <motion.div initial={false} whileInView={{ opacity: [0.6, 1], x: reduce ? 0 : [-24, 0] }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: reduce ? 0.2 : 0.6 }} className="mx-auto grid max-w-7xl items-center gap-8 px-5 lg:grid-cols-2 lg:gap-14">
-          <div className="group overflow-hidden rounded-lg">
+          <div className="overflow-hidden rounded-lg">
             <img
               src={s.image}
               alt={s.imageAlt}
               loading="lazy"
               width={meta?.w ?? 720}
               height={meta?.h ?? 540}
-              style={{ objectPosition: IMG_POSITION[s.image] ?? "center" }}
-              className={`w-full object-cover transition-transform duration-700 motion-safe:group-hover:scale-[1.04] ${vertical ? "mx-auto aspect-[4/5] max-h-[560px]" : "aspect-[4/3]"}`}
+               className="mx-auto h-auto max-h-[560px] w-full object-contain"
             />
           </div>
           <div className="min-w-0">
