@@ -25,3 +25,7 @@
 - [x] Adaptive photo containers (no hard crops on vertical photos).
 - [ ] Apply client's exact service texts (document had "[TEXTO DEL CLIENTE]" placeholders — awaiting texts).
 - [ ] Replace service photos with client-provided photos (awaiting upload).
+
+# Photos from FOTOS.docx
+- [ ] Extract and assign the supplied service photographs without cross-page duplication.
+- [ ] Display complete service photos and verify galleries on desktop and mobile.
