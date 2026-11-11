@@ -111,7 +111,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: SITE.name,
-          telephone: SITE.phoneE164,
+          telephone: [SITE.phoneE164, SITE.secondaryPhoneE164],
           email: SITE.email,
           areaServed: "Colombia",
           foundingDate: "2018-12",

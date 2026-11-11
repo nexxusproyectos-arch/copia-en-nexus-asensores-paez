@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { motion, useReducedMotion } from "framer-motion";
 import { ClipboardList } from "lucide-react";
 import { ELEVATOR_BLOCKS } from "@/lib/services";
-import { IMG_META } from "@/lib/images";
+import { IMG_META, MEDIA } from "@/lib/images";
 import { Button } from "@/components/ui/button";
 import { NormativeSection } from "./NormativeSection";
 import { WhatsAppButton } from "./WhatsApp";
@@ -28,6 +28,14 @@ export function ElevatorServices() {
         </div>
       </motion.div>
     </section>)}
+    <section aria-label="Video de ascensores y soluciones de accesibilidad" className="border-b border-border py-14 lg:py-20">
+      <motion.div initial={false} whileInView={{ opacity: [0.6, 1], y: reduce ? 0 : [24, 0] }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: reduce ? 0.2 : 0.6 }} className="mx-auto max-w-sm overflow-hidden rounded-lg bg-ink px-0 shadow-xl">
+        <video controls playsInline preload="none" poster={MEDIA.ascensoresVideoPoster} width={576} height={1024} aria-label="Video de ascensores y soluciones de accesibilidad de Ascensores Páez" className="h-auto w-full">
+          <source src={MEDIA.ascensoresVideo} type="video/mp4" />
+          Su navegador no puede reproducir este video.
+        </video>
+      </motion.div>
+    </section>
     <NormativeSection />
   </>;
 }

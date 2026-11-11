@@ -65,6 +65,7 @@ describe("final client service destinations", () => {
     }
     expect(owners.get(IMG.montacargas)).toBe("ascensores");
     expect(owners.get(IMG.montacoches)).toBe("ascensores");
+    expect(owners.get(IMG.ascensorCabinaMadera)).toBe("ascensores");
   });
   it("builds the home lead-form URL with service and anchor", () => {
     const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });

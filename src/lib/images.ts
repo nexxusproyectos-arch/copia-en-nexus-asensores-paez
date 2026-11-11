@@ -20,6 +20,10 @@ import modernizacionCabina from "@/assets/modernizacion-cabina.webp.asset.json";
 import modernizacionControl from "@/assets/modernizacion-control.webp.asset.json";
 import modernizacionInterior from "@/assets/modernizacion-interior.webp.asset.json";
 import adecuacionSeguridad from "@/assets/adecuacion-seguridad.webp.asset.json";
+import nuestraEmpresa from "@/assets/nuestra-empresa.jpg.asset.json";
+import ascensorCabinaMadera from "@/assets/ascensores-cabina-madera.jpg.asset.json";
+import montacargasVideo from "@/assets/montacargas-funcionamiento.mp4.asset.json";
+import montacargasVideoPoster from "@/assets/montacargas-portada.jpg.asset.json";
 
 export const IMG = {
   lobby: lobby.url,
@@ -44,6 +48,13 @@ export const IMG = {
   modernizacionControl: modernizacionControl.url,
   modernizacionInterior: modernizacionInterior.url,
   adecuacionSeguridad: adecuacionSeguridad.url,
+  nuestraEmpresa: nuestraEmpresa.url,
+  ascensorCabinaMadera: ascensorCabinaMadera.url,
+};
+
+export const MEDIA = {
+  ascensoresVideo: montacargasVideo.url,
+  ascensoresVideoPoster: montacargasVideoPoster.url,
 };
 
 // Dimensiones reales de cada foto para adaptar contenedores sin recortes fuertes ni escalado.
@@ -69,6 +80,8 @@ export const IMG_META: Record<string, { w: number; h: number }> = {
   [IMG.modernizacionControl]: { w: 1535, h: 1024 },
   [IMG.modernizacionInterior]: { w: 1349, h: 758 },
   [IMG.adecuacionSeguridad]: { w: 1351, h: 754 },
+  [IMG.nuestraEmpresa]: { w: 1086, h: 1448 },
+  [IMG.ascensorCabinaMadera]: { w: 1448, h: 1086 },
 };
 
 export const isVerticalImage = (src: string) => {

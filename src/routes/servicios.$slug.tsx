@@ -46,7 +46,7 @@ export const Route = createFileRoute("/servicios/$slug")({
             name: s.name,
             description: s.seoDescription,
             areaServed: "Colombia",
-            provider: { "@type": "LocalBusiness", name: SITE.name, telephone: SITE.phoneE164 },
+            provider: { "@type": "LocalBusiness", name: SITE.name, telephone: [SITE.phoneE164, SITE.secondaryPhoneE164] },
           }),
         },
       ],

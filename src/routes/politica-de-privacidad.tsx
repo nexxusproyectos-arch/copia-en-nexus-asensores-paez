@@ -21,7 +21,7 @@ export const Route = createFileRoute("/politica-de-privacidad")({
       <div className="mt-10 space-y-6 leading-relaxed text-muted-foreground [&_h2]:mt-10 [&_h2]:text-xl [&_h2]:font-extrabold [&_h2]:text-foreground">
         <p>En cumplimiento de la Ley Estatutaria 1581 de 2012 y el Decreto 1074 de 2015, {SITE.name} informa la forma en que recolecta, almacena, usa y protege los datos personales de sus clientes y visitantes.</p>
         <h2>Responsable del tratamiento</h2>
-        <p>{SITE.name}. Dirección: {SITE.address}. Correo: {SITE.email}. Teléfono: {SITE.phoneDisplay}.</p>
+        <p>{SITE.name}. Dirección: {SITE.address}. Correo: {SITE.email}. Teléfonos: {SITE.phoneDisplay} y {SITE.secondaryPhoneDisplay}.</p>
         <h2>Datos que recolectamos</h2>
         <p>Nombre, teléfono, correo electrónico, servicio de interés y el mensaje que nos envía a través del formulario de contacto o WhatsApp.</p>
         <h2>Finalidad</h2>

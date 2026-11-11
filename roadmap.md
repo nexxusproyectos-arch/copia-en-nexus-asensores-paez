@@ -15,7 +15,9 @@
 - [x] Apply exact company copy, history, mission and vision.
 - [x] Update contact copy and reuse the real form with required service selection and WhatsApp context.
 - [x] Verify desktop/mobile pages, submission storage and tests.
-- [ ] Replace company photograph with its exclusive photo (FOTOS.docx labels technician photos for services only; awaiting company photo/designation).
+- [x] Replace company photograph with its exclusive client-supplied photo.
+- [x] Add the client-supplied passenger cabin photo and elevator video to Ascensores.
+- [x] Add secondary phone 321 339 2269 to Contact, Footer and contact metadata.
 
 # Simple service pages + usted sweep
 - [x] Convert remaining "tú" forms to "usted" (services data, privacy page, home metadata).

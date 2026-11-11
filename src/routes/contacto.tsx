@@ -44,7 +44,7 @@ function Contact() {
         <aside className="space-y-8 lg:col-span-4">
           <WhatsAppButton message="Hola, Ascensores Páez. Quiero hablar con un asesor." label="Chatear por WhatsApp" className="w-full" />
             <ul className="space-y-5 text-sm">
-              <li className="flex gap-3"><Phone className="h-5 w-5 shrink-0 text-primary" /><div><span className="block font-bold">Teléfono / WhatsApp</span><a href={`tel:${SITE.phoneE164}`} className="text-muted-foreground hover:text-foreground">{SITE.phoneDisplay}</a></div></li>
+              <li className="flex gap-3"><Phone className="h-5 w-5 shrink-0 text-primary" /><div><span className="block font-bold">Teléfono / WhatsApp</span><a href={`tel:${SITE.phoneE164}`} className="block text-muted-foreground hover:text-foreground">{SITE.phoneDisplay}</a><span className="mt-3 block font-bold">Teléfono secundario</span><a href={`tel:${SITE.secondaryPhoneE164}`} className="text-muted-foreground hover:text-foreground">{SITE.secondaryPhoneDisplay}</a></div></li>
               <li className="flex gap-3"><Mail className="h-5 w-5 shrink-0 text-primary" /><div><span className="block font-bold">Correo</span><a href={`mailto:${SITE.email}`} className="break-all text-muted-foreground hover:text-foreground">{SITE.email}</a></div></li>
               <li className="flex gap-3"><MapPin className="h-5 w-5 shrink-0 text-primary" /><div><span className="block font-bold">Dirección</span><span className="text-muted-foreground">{SITE.address}</span></div></li>
             </ul>

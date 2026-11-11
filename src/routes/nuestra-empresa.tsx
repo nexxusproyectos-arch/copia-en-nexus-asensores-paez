@@ -30,7 +30,7 @@ function About() {
   return <>
     <section className="py-14 lg:py-20">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 lg:grid-cols-2 lg:items-center lg:gap-16">
-        <motion.img src={IMG.camillero} alt="Técnico acompañando a una persona en un ascensor camillero" width={720} height={760} initial={false} whileInView={{ opacity: [0.85, 1], y: reduce ? 0 : [12, 0] }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="aspect-[5/4] w-full rounded-lg object-cover lg:aspect-[4/5]" />
+        <motion.img src={IMG.nuestraEmpresa} alt="Técnico de Ascensores Páez revisando máquinas de ascensor" width={1086} height={1448} initial={false} whileInView={{ opacity: [0.85, 1], y: reduce ? 0 : [12, 0] }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="aspect-[5/4] w-full rounded-lg object-cover lg:aspect-[4/5]" />
         <div>
           <p className="text-xs font-extrabold text-primary after:mt-3 after:block after:h-0.5 after:w-12 after:bg-primary">QUIÉNES SOMOS</p>
           <h1 className="mt-6 text-3xl font-extrabold leading-tight md:text-4xl">Líderes en ingeniería, calidad y seguridad vertical.</h1>
