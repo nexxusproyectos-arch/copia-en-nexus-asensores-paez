@@ -1,4 +1,5 @@
 # Client changes
+- [x] Replace the Home Ascensores card's old photo with the client-supplied wooden passenger cabin.
 - [x] Use the passenger cabin photo only for the Home Ascensores card.
 - [x] Omit empty servicio parameters from Contact URLs.
 ## Final service changes
