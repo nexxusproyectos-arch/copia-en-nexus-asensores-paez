@@ -10,6 +10,7 @@
 <!-- LOVABLE:END -->
 
 ## Project rules
+- This remix starts with an empty Drizzle migration journal; add only new schema changes instead of replaying the source project's migrations, to preserve the copied database.
 - Company contact data and WhatsApp links come only from `src/lib/site.ts` (`waLink`); never hardcode the number elsewhere so it changes in one place.
 - Service landings are one template (`src/routes/servicios.$slug.tsx`) fed by `src/lib/services.ts`; add a service by adding data, not a new route file.
 - Contact form submissions are validated with zod and stored server-side in `contact_submissions` via a server function; never simulate sends.
