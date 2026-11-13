@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "c03572da-bf3d-422e-add5-473a01a6739c",
-  "project_id": "36d899d2-28ba-4c84-a24d-0bdde767ba6a",
-  "url": "/__l5e/assets-v1/c03572da-bf3d-422e-add5-473a01a6739c/mantenimiento-maquinas.webp",
-  "r2_key": "a/v1/36d899d2-28ba-4c84-a24d-0bdde767ba6a/c03572da-bf3d-422e-add5-473a01a6739c/mantenimiento-maquinas.webp",
-  "original_filename": "mantenimiento-maquinas.webp",
-  "size": 232320,
   "content_type": "image/webp",
-  "created_at": "2026-11-06T14:52:46Z"
+  "created_at": "2026-11-06T14:52:46Z",
+  "original_filename": "mantenimiento-maquinas.webp",
+  "project_id": "5d83da8f-f271-4105-b2e1-d0ff0beace45",
+  "r2_key": "a/v1/5d83da8f-f271-4105-b2e1-d0ff0beace45/c03572da-bf3d-422e-add5-473a01a6739c/mantenimiento-maquinas.webp",
+  "size": 232320,
+  "url": "/__l5e/assets-v1/c03572da-bf3d-422e-add5-473a01a6739c/mantenimiento-maquinas.webp",
+  "version": 1
 }

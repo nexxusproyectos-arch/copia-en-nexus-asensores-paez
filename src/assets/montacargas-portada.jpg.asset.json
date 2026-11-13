@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "df8c8c81-88a4-4f5d-9fa2-f5607700923b",
-  "project_id": "36d899d2-28ba-4c84-a24d-0bdde767ba6a",
-  "url": "/__l5e/assets-v1/df8c8c81-88a4-4f5d-9fa2-f5607700923b/montacargas-portada.jpg",
-  "r2_key": "a/v1/36d899d2-28ba-4c84-a24d-0bdde767ba6a/df8c8c81-88a4-4f5d-9fa2-f5607700923b/montacargas-portada.jpg",
-  "original_filename": "montacargas-portada.jpg",
-  "size": 44660,
   "content_type": "image/jpeg",
-  "created_at": "2026-11-11T20:22:47Z"
+  "created_at": "2026-11-11T20:22:47Z",
+  "original_filename": "montacargas-portada.jpg",
+  "project_id": "5d83da8f-f271-4105-b2e1-d0ff0beace45",
+  "r2_key": "a/v1/5d83da8f-f271-4105-b2e1-d0ff0beace45/df8c8c81-88a4-4f5d-9fa2-f5607700923b/montacargas-portada.jpg",
+  "size": 44660,
+  "url": "/__l5e/assets-v1/df8c8c81-88a4-4f5d-9fa2-f5607700923b/montacargas-portada.jpg",
+  "version": 1
 }
